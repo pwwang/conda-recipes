@@ -1,0 +1,61 @@
+{% set version = '0.2.1' %}
+
+package:
+  name: r-innsight
+  version: {{ version|replace("-", "_") }}
+
+source:
+  git_url: https://github.com/pwwang/innsight
+  git_rev: f74fbeee5bcb9bac42e660181113e340d6e4df98
+
+build:
+  merge_build_host: True  # [win]
+  # If this is a new build for the same version, increment the build number.
+  number: 1
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, V8
+requirements:
+
+  build:
+    - r-base
+    - r-rcpp
+    - r-checkmate
+    - r-cli
+    - r-ggplot2
+    - r-r6
+    - r-touch
+
+  run:
+    - r-base
+    - r-rcpp
+    - r-checkmate
+    - r-cli
+    - r-ggplot2
+    - r-r6
+    - r-touch
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library(innsight)"           # [not win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/pwwang/innsight
+  license: MIT
+  summary: Interpretability methods to analyze the behavior and individual predictions of modern neural networks in R
+  license_family: MIT
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/MIT'
+    - innsight/LICENSE

@@ -1,0 +1,52 @@
+{% set version = '0.2.0' %}
+
+package:
+  name: r-ggradar
+  version: {{ version|replace("-", "_") }}
+
+source:
+  git_url: https://github.com/ricardo-bion/ggradar
+  git_rev: 568537ab057b333f628c1087d1a8b268eb490de8 # on 2022.02.22
+
+build:
+  merge_build_host: True  # [win]
+  # If this is a new build for the same version, increment the build number.
+  number: 568538
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, V8
+requirements:
+
+  build:
+    - r-base
+    - r-ggplot2
+
+  run:
+    - r-base
+    - r-ggplot2
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('ggradar')"           # [not win]
+    - "\"%R%\" -e \"library('ggradar')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/ricardo-bion/ggradar
+  license: GPL-2
+  summary: This package exports the functionality of ggplot2 to create radar charts.
+  license_family: GPL
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+    - DESCRIPTION

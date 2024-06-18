@@ -1,0 +1,61 @@
+{% set version = '0.0.3' %}
+
+package:
+  name: r-hitype
+  version: {{ version|replace("-", "_") }}
+
+source:
+  git_url: https://github.com/pwwang/hitype
+  git_rev: "{{version}}"
+
+build:
+  merge_build_host: True  # [win]
+  # If this is a new build for the same version, increment the build number.
+  number: 1
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, V8
+requirements:
+
+  build:
+    - r-base
+    - r-rcpp
+    - r-dplyr
+    - r-openxlsx
+    - r-scales
+    - r-seurat
+    - r-hgnchelper
+
+  run:
+    - r-base
+    - r-rcpp
+    - r-dplyr
+    - r-openxlsx
+    - r-scales
+    - r-seurat
+    - r-hgnchelper
+    - r-stringi
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library(hitype)"           # [not win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/pwwang/hitype
+  license: GPL-3
+  summary: Hierarchical and high-resolution cell-type identification for single-cell RNA-seq data based on ScType.
+  license_family: GPL
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'

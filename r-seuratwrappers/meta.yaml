@@ -1,0 +1,64 @@
+{% set version = '0.3.1' %}
+
+package:
+  name: r-seuratwrappers
+  version: {{ version|replace("-", "_") }}
+
+source:
+  git_url: https://github.com/satijalab/seurat-wrappers
+  git_rev: d28512f804d5fe05e6d68900ca9221020d52cf1d # on 2022.10.21
+
+build:
+  merge_build_host: True  # [win]
+  # If this is a new build for the same version, increment the build number.
+  number: 3
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, V8
+requirements:
+
+  host:
+    - r-base
+    - r-r.utils
+    - r-seurat
+    - r-ggplot2
+    - r-biocmanager
+    - r-remotes
+    - r-rsvd
+
+  run:
+    - r-base
+    - r-r.utils
+    - r-ggplot2
+    - r-seurat
+    - r-biocmanager
+    - r-remotes
+    - r-rsvd
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('SeuratWrappers')"           # [not win]
+    - "\"%R%\" -e \"library('SeuratWrappers')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+test:
+    commands:
+        - $R -e "library('SeuratWrappers')"
+about:
+    home: https://CRAN.R-project.org/package=SeuratWrappers
+    license: GPL-3 | file LICENSE
+    license_family: GPL3
+    summary: SeuratWrappers is a collection of community-provided methods and extensions
+        for Seurat, curated by the Satija Lab at NYGC. These methods comprise functionality
+        not presently found in Seurat, and are able to be updated much more frequently.

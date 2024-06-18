@@ -1,0 +1,51 @@
+{% set version = '1.2.0' %}
+
+package:
+  name: r-gsea_r
+  version: {{ version|replace("-", "_") }}
+
+source:
+  git_url: https://github.com/GSEA-MSigDB/GSEA_R
+  git_rev: b49beee596ec188deaf62cb3d40d1c7c006af347 # on 2021.11.29
+
+build:
+  merge_build_host: True  # [win]
+  # If this is a new build for the same version, increment the build number.
+  number: 2
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, V8
+requirements:
+
+  build:
+    - r-base
+    - r-dplyr
+
+  run:
+    - r-base
+    - r-dplyr
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('GSEA')"           # [not win]
+    - "\"%R%\" -e \"library('GSEA')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/GSEA-MSigDB/GSEA_R
+  license: BSD-style
+  summary: Copyright © 2003-2019 The Broad Institute, Inc., Massachusetts Institute of Technology and Regents of the University of California. All rights reserved.
+  license_family: BSD
+  license_file:
+    - LICENSE

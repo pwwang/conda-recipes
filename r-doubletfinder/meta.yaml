@@ -1,0 +1,54 @@
+{% set version = '2.0.4' %}
+
+package:
+  name: r-doubletfinder
+  version: {{ version|replace("-", "_") }}
+
+source:
+  git_url: https://github.com/chris-mcginnis-ucsf/DoubletFinder
+  git_rev: 853e2de13ac4a826d8f70900c9baf10cbf43a9c7 # on Nov 21, 2023
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 1
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, V8
+requirements:
+
+  build:
+    - r-base
+    - r-seurat
+    - r-fields
+    - r-kernsmooth
+    - r-rocr
+
+  run:
+    - r-base
+    - r-seurat
+    - r-fields
+    - r-kernsmooth
+    - r-rocr
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - "\"%R%\" -e \"library('DoubletFinder')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/chris-mcginnis-ucsf/DoubletFinder
+  license: CC-0
+  summary: DoubletFinder is an R package that predicts doublets in single-cell RNA sequencing data.
+  license_family: CC
+  license_file: DESCRIPTION

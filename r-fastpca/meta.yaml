@@ -1,0 +1,52 @@
+{% set version = '1.0.0' %}
+
+package:
+  name: r-fastrpca
+  version: {{ version|replace("-", "_") }}
+
+source:
+  git_url: https://github.com/KlugerLab/rpca-mkl
+  git_rev: 4eb4e22e210622b0de4dc291da58dab68047f425 # on 2022.07.30
+
+build:
+  merge_build_host: True  # [win]
+  # If this is a new build for the same version, increment the build number.
+  number: 1
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, V8
+requirements:
+
+  build:
+    - r-base
+    - r-rcpp
+
+  run:
+    - r-base
+    - r-rcpp
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('fastRPCA')"           # [not win]
+    - "\"%R%\" -e \"library('fastRPCA')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/KlugerLab/rpca-mkl
+  license: GPL-2
+  summary: Implementation of randomized PCA using Intel MKL.
+  license_family: GPL
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+    - fastRPCA/DESCRIPTION

@@ -1,0 +1,70 @@
+{% set version = '1.2.0' %}
+
+package:
+  name: r-harmony
+  version: {{ version|replace("-", "_") }}
+
+source:
+  url:
+    - {{ cran_mirror }}/src/contrib/harmony_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/harmony/harmony_{{ version }}.tar.gz
+  sha256: a63c7d7cbbc5d183e8f919552e9d73044e0a89660856e80861a00eb5d25ac7b5
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 2
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, knitr, rmarkdown
+requirements:
+
+  host:
+    - r-base
+    - r-rcpp
+    - r-dplyr
+    - r-cowplot
+    - r-ggplot2
+    - r-matrix
+    - r-tibble
+    - r-rlang
+    - r-rhpcblasctl
+    - r-rcpparmadillo
+    - r-rcppprogress
+
+  run:
+    - r-base
+    - r-rcpp
+    - r-dplyr
+    - r-cowplot
+    - r-ggplot2
+    - r-matrix
+    - r-tibble
+    - r-rlang
+    - r-rhpcblasctl
+    - r-rcpparmadillo
+    - r-rcppprogress
+
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('harmony')"           # [not win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://CRAN.R-project.org/package=harmony
+  license: GPL-3
+  summary: Fast, sensitive and accurate integration of single-cell data with Harmony
+  license_family: GPL3
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'

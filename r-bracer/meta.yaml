@@ -1,0 +1,53 @@
+{% set version = '1.2.1' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-bracer
+  version: {{ version|replace("-", "_") }}
+
+source:
+  url:
+    - {{ cran_mirror }}/src/contrib/bracer_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/bracer/bracer_{{ version }}.tar.gz
+  sha256: ce745b66640c7a22007e5ba1285849595128148b0b42f03556d49e9206b98760
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, V8
+requirements:
+
+  host:
+    - r-base
+    - r-stringr
+
+  run:
+    - r-base
+    - r-stringr
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('bracer')"           # [not win]
+
+about:
+  home: https://trevorldavis.com/R/bracer/, https://github.com/trevorld/bracer
+  license: MIT
+  summary: Performs brace expansions on strings.  Made popular by Unix shells, brace expansion
+    allows users to concisely generate certain character vectors by taking a single
+    string and (recursively) expanding the comma-separated lists and double-period-separated
+    integer and character sequences enclosed within braces in that string.  The double-period-separated
+    numeric integer expansion also supports padding the resulting numbers with zeros.
+  license_family: MIT
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/MIT'
+    - LICENSE

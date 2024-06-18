@@ -1,0 +1,56 @@
+{% set version = '3.2.2' %}
+
+package:
+  name: r-sccatch
+  version: {{ version|replace("-", "_") }}
+
+source:
+  url:
+    - {{ cran_mirror }}/src/contrib/scCATCH_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/scCATCH/scCATCH_{{ version }}.tar.gz
+  sha256: 1bf5ef9fdbda3a7eb3443382bb1dc2fff48c41427e98884fee7a8151f5336d6a
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, V8
+requirements:
+
+  host:
+    - r-base
+    - r-matrix
+    - r-progress
+    - r-reshape2
+
+  run:
+    - r-base
+    - r-matrix
+    - r-progress
+    - r-reshape2
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('scCATCH')"           # [not win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/ZJUFanLab/scCATCH
+  license: GPL-2
+  summary: Automatic Annotation on Cell Types of Clusters from Single-Cell RNA Sequencing Data.
+  license_family: MIT
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+    - LICENSE.md

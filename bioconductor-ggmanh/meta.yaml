@@ -1,0 +1,48 @@
+{% set name = "bioconductor-ggmanh" %}
+{% set version = "1.9.6" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/swannyy14/ggmanh
+  git_rev: f27c0fc76579fa17ccc158ffd7c30220bebfc106  # 6/15/2024
+
+build:
+  number: 0
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+    host:
+        - bioconductor-gdsfmt
+        - bioconductor-seqarray
+        - r-ggrepel
+        - r-rcolorbrewer
+        - r-scales
+        - r-tidyr
+    run:
+        - bioconductor-gdsfmt
+        - bioconductor-seqarray
+        - r-ggrepel
+        - r-rcolorbrewer
+        - r-scales
+        - r-tidyr
+
+test:
+    commands:
+        - $R -e 'library(ggmanh)'
+
+about:
+  home: https://github.com/swannyy14/ggmanh
+  dev_url: https://github.com/swannyy14/ggmanh
+  license: MIT
+  license_file: LICENSE.md
+  summary: 'Visualization Tool for GWAS Result'
+  description: |
+    Manhattan plot and QQ Plot are commonly used to visualize the end result of Genome Wide Association Study.
+    The "ggmanh" package aims to keep the generation of these plots simple while maintaining customizability.
+    Main functions include manhattan_plot, qqunif, and thinPoints.
+  license_family: MIT
