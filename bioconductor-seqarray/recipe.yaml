@@ -1,31 +1,33 @@
-{% set name = "bioconductor-seqarray" %}
-{% set version = "1.42.4" %}
+# by rattler-build
+
+context:
+  name: bioconductor-seqarray
+  version: 1.42.4
+  build_number: 0
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  git_url: https://git.bioconductor.org/packages/SeqArray
-  git_rev: ae2387745ec0a9af6bde8c331e86587cd7fbe4a5  # 4/3/2024
+  git: https://git.bioconductor.org/packages/SeqArray
+  # branch: RELEASE_3_18
+  rev: ae2387745ec0a9af6bde8c331e86587cd7fbe4a5  # 4/3/2024
 
 build:
-  number: 0
-  rpaths:
-    - lib/R/lib/
-    - lib/
+  number: ${{ build_number }}
+  script:
+    - R CMD INSTALL --build .
 
 requirements:
-    host:
-      - r-base=4.2
+  host:
       - bioconductor-iranges
       - bioconductor-genomicranges
       - bioconductor-genomeinfodb
       - bioconductor-biostrings
       - bioconductor-s4vectors
       - bioconductor-gdsfmt
-    run:
-      - r-base=4.2
+  run:
       - bioconductor-iranges
       - bioconductor-genomicranges
       - bioconductor-genomeinfodb
@@ -33,14 +35,13 @@ requirements:
       - bioconductor-s4vectors
       - bioconductor-gdsfmt
 
-test:
-    commands:
-        - $R -e 'library(SeqArray)'
+tests:
+  - script:
+    - R -e 'library(SeqArray)'
 
 about:
-  home: https://github.com/zhengxwen/SeqArray
-  dev_url: https://github.com/zhengxwen/SeqArray
-  license: GPL-3
+  homepage: https://github.com/zhengxwen/SeqArray
+  license: 	GPL-3.0-or-later
   license_file: DESCRIPTION
   summary: 'Data Management of Large-scale Whole-genome Sequence Variant Calls'
   description: |
@@ -57,4 +58,3 @@ about:
     since a diploid genotype usually occupies fewer bits than a byte. Data compression
     and decompression are available with relatively efficient random access.
     A high-level R interface to GDS files is available in the package gdsfmt.
-  license_family: GPL
