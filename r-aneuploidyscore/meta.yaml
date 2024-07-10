@@ -1,0 +1,46 @@
+{% set version = '2021.2.11' %}
+
+package:
+  name: r-aneuploidyscore
+  version: {{ version|replace("-", "_") }}
+
+source:
+  git_url: https://github.com/quevedor2/aneuploidy_score
+  git_rev: 14bdddff999ea03591000f316c66cf821014ada0 # on 2021.02.11
+
+build:
+  number: 1
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+
+  host:
+    - r-base
+    - bioconductor-genomicranges
+    - bioconductor-iranges
+    - bioconductor-s4vectors
+    - bioconductor-genomeinfodb
+    - r-matrixstats
+
+  run:
+    - r-base
+    - bioconductor-genomicranges
+    - bioconductor-iranges
+    - bioconductor-s4vectors
+    - bioconductor-genomeinfodb
+    - r-matrixstats
+
+test:
+  commands:
+    - $R -e "library('AneuploidyScore')"
+
+
+about:
+  home: https://github.com/quevedor2/aneuploidy_score
+  license: MIT
+  summary: R package to calculate the Aneuploidy Score from Chromosome Arm-level SCNAs/Aneuploidies (CAAs) as outlined and expanded by Shukla et al.
+  license_family: MIT
+  license_file:
+    - LICENSE
