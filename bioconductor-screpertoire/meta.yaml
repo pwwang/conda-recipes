@@ -1,0 +1,86 @@
+{% set name = "bioconductor-screpertoire" %}
+{% set version = "2.0.8" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/ncborcherding/scRepertoire
+  git_rev: 1e7700632df54eec506ab8e9f792d383fda87ec5
+
+build:
+  number: 0
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+    host:
+        - conda-forge::r-assertthat
+        - conda-forge::r-cubature
+        - conda-forge::r-dplyr
+        - conda-forge::r-evmix
+        - conda-forge::r-ggalluvial
+        - conda-forge::r-ggdendro
+        - conda-forge::r-ggraph
+        - conda-forge::r-igraph
+        - conda-forge::r-inext
+        - conda-forge::r-plyr
+        - conda-forge::r-quantreg
+        - conda-forge::r-rcpp
+        - conda-forge::r-reshape2
+        - conda-forge::r-rjson
+        - conda-forge::r-rlang
+        - bioconda::bioconductor-s4vectors
+        - conda-forge::r-seuratobject
+        - bioconda::bioconductor-singlecellexperiment
+        - conda-forge::r-stringr
+        - conda-forge::r-stringdist
+        - bioconda::bioconductor-summarizedexperiment
+        - conda-forge::r-tidygraph
+        - conda-forge::r-truncdist
+        - conda-forge::r-vgam
+        - conda-forge::r-hash
+
+    run:
+        - conda-forge::r-assertthat
+        - conda-forge::r-cubature
+        - conda-forge::r-dplyr
+        - conda-forge::r-evmix
+        - conda-forge::r-ggalluvial
+        - conda-forge::r-ggdendro
+        - conda-forge::r-ggraph
+        - conda-forge::r-igraph
+        - conda-forge::r-inext
+        - conda-forge::r-plyr
+        - conda-forge::r-quantreg
+        - conda-forge::r-rcpp
+        - conda-forge::r-reshape2
+        - conda-forge::r-rjson
+        - conda-forge::r-rlang
+        - bioconda::bioconductor-s4vectors
+        - conda-forge::r-seuratobject
+        - bioconda::bioconductor-singlecellexperiment
+        - conda-forge::r-stringr
+        - conda-forge::r-stringdist
+        - bioconda::bioconductor-summarizedexperiment
+        - conda-forge::r-tidygraph
+        - conda-forge::r-truncdist
+        - conda-forge::r-vgam
+        - conda-forge::r-hash
+
+test:
+    commands:
+        - $R -e 'library(scRepertoire)'
+
+about:
+  home: https://github.com/ncborcherding/scRepertoire
+  dev_url: https://github.com/ncborcherding/scRepertoire
+  license: MIT
+  license_file: LICENSE
+  summary: 'A toolkit for single-cell immune profiling'
+  description: |
+    Single-cell sequencing is an emerging technology in the field of immunology and oncology that allows researchers to
+    couple RNA quantification and other modalities, like immune cell receptor profiling at the level of an individual cell.
+  license_family: MIT
