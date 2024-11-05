@@ -1,5 +1,5 @@
 {% set name = "bioconductor-screpertoire" %}
-{% set version = "2.0.8" %}
+{% set version = "2.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   git_url: https://github.com/ncborcherding/scRepertoire
-  git_rev: 1e7700632df54eec506ab8e9f792d383fda87ec5
+  git_rev: 08e80abcaf1e45adbc59428788ca1c32904c9644
 
 build:
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
