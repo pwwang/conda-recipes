@@ -1,0 +1,52 @@
+package:
+  name: "r-tidyprompt"
+  version: "0.0.1"
+
+source:
+  git_url: https://github.com/tjarkvandemerwe/tidyprompt
+  git_rev: 41de7c8fe2d58cf61e1afd321dffd4e1733e9b0c
+
+build:
+  number: 1
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+    host:
+        - conda-forge::r-base>=4.3
+        - conda-forge::r-dplyr
+        - conda-forge::r-glue
+        - conda-forge::r-httr2
+        - conda-forge::r-jsonlite
+        - conda-forge::r-stringr
+        - conda-forge::r-cli
+        - conda-forge::r-r6
+        - conda-forge::r-callr
+        - conda-forge::r-skimr
+
+    run:
+        - conda-forge::r-base>=4.3
+        - conda-forge::r-dplyr
+        - conda-forge::r-glue
+        - conda-forge::r-httr2
+        - conda-forge::r-jsonlite
+        - conda-forge::r-stringr
+        - conda-forge::r-cli
+        - conda-forge::r-r6
+        - conda-forge::r-callr
+        - conda-forge::r-skimr
+
+test:
+    commands:
+        - $R -e 'library(tidyprompt)'
+
+about:
+  home: https://github.com/tjarkvandemerwe/tidyprompt
+  dev_url: https://github.com/tjarkvandemerwe/tidyprompt
+  license: GPL-3
+  license_file: LICENSE
+  summary: 'Create LLM prompting pipelines'
+  description: |
+    'tidyprompt' is an R package to easily construct prompts and associated logic for interacting with large language models ('LLMs').
+  license_family: GPL
