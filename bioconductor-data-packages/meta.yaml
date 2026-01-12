@@ -1,6 +1,6 @@
 package:
   name: 'bioconductor-data-packages'
-  version: '20260109'
+  version: '20260112'
 source:
 build:
   number: '0'
