@@ -1,6 +1,6 @@
 package:
   name: 'bioconductor-data-packages'
-  version: '20240709'
+  version: '20260109'
 source:
 build:
   number: '0'
@@ -12,6 +12,7 @@ requirements:
     - r-base
     # - curl
     - yq
+    - wget
 test:
   commands:
     - yq --help
