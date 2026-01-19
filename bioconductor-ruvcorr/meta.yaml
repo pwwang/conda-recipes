@@ -1,0 +1,81 @@
+# This file created by conda-build 3.24.0
+# meta.yaml template originally from:
+# /opt/recipe, last modified Wed Dec 20 01:23:20 2023
+# ------------------------------------------------
+
+package:
+  name: bioconductor-motifbreakr
+  version: 2.19.5
+source:
+  git_url: https://github.com/Simon-Coetzee/motifBreakR
+  git_rev: cb55b0ba89e8bb4eae8b9f2f37b0b927c58f587e
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  build:
+    - bioconductor-biocgenerics
+    - bioconductor-biocparallel
+    - bioconductor-biostrings
+    - bioconductor-bsgenome
+    - bioconductor-genomeinfodb
+    - bioconductor-genomicranges
+    - bioconductor-gviz
+    - bioconductor-iranges
+    - bioconductor-motifdb
+    - bioconductor-motifstack
+    - bioconductor-rtracklayer
+    - bioconductor-s4vectors
+    - bioconductor-summarizedexperiment
+    - bioconductor-variantannotation
+    - r-base
+    - r-matrixstats
+    - r-stringr
+    - r-tfmpvalue
+    - r-dt
+    - r-bsicons
+    - r-shiny
+  run:
+    - bioconductor-biocgenerics
+    - bioconductor-biocparallel
+    - bioconductor-biostrings
+    - bioconductor-bsgenome
+    - bioconductor-genomeinfodb
+    - bioconductor-genomicranges
+    - bioconductor-gviz
+    - bioconductor-iranges
+    - bioconductor-motifdb
+    - bioconductor-motifstack
+    - bioconductor-rtracklayer
+    - bioconductor-s4vectors
+    - bioconductor-summarizedexperiment
+    - bioconductor-variantannotation
+    - r-base
+    - r-matrixstats
+    - r-stringr
+    - r-tfmpvalue
+    - r-dt
+    - r-bsicons
+    - r-shiny
+test:
+  commands:
+    - $R -e "library('motifbreakR')"
+about:
+  description: We introduce motifbreakR, which allows the biologist to judge in the
+    first place whether the sequence surrounding the polymorphism is a good match,
+    and in the second place how much information is gained or lost in one allele of
+    the polymorphism relative to another. MotifbreakR is both flexible and extensible
+    over previous offerings; giving a choice of algorithms for interrogation of genomes
+    with motifs from public sources that users can choose from; these are 1) a weighted-sum
+    probability matrix, 2) log-probabilities, and 3) weighted by relative entropy.
+    MotifbreakR can predict effects for novel or previously described variants in
+    public databases, making it suitable for tasks beyond the scope of its original
+    design. Lastly, it can be used to interrogate any genome curated within Bioconductor
+    (currently there are 32 species, a total of 109 versions).
+  home: https://bioconductor.org/packages/3.18/bioc/html/motifbreakR.html
+  license: GPL-2
+  summary: A Package For Predicting The Disruptiveness Of Single Nucleotide Polymorphisms
+    On Transcription Factor Binding Sites
+
