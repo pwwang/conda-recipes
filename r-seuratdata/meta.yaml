@@ -1,5 +1,5 @@
 {% set name = "r-seuratdata" %}
-{% set version = "2023.11.4" %}
+{% set version = "2025.3.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   git_url: https://github.com/satijalab/seurat-data
-  git_rev: 4dc08e022f51c324bc7bf785b1b5771d2742701d  # on Nov 4, 2023
+  git_rev: 3e51f44303069b64f5dc4d68e6a3d4a343f55c39  # on Mar 4, 2025
 
 build:
   number: 0
