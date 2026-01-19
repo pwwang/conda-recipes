@@ -1,0 +1,48 @@
+{% set version = '0.1.2' %}
+
+package:
+  name: r-bsicons
+  version: {{ version|replace("-", "_") }}
+
+source:
+  git_url: https://github.com/rstudio/bsicons
+  git_rev: b4cb308d90d6d29f5296339f38e13951fae94b60 # on Dec 30, 2025
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 1
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, V8
+requirements:
+
+  build:
+    - r-cli
+    - r-htmltools
+    - r-rlang
+
+  run:
+    - r-cli
+    - r-htmltools
+    - r-rlang
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library("bsicons")"
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/rstudio/bsicons
+  license: MIT
+  summary: An R package for using Bootstrap icons in Shiny and R Markdown
