@@ -1,0 +1,81 @@
+# This file created by conda-build 3.24.0
+# meta.yaml template originally from:
+# /opt/recipe, last modified Fri Dec 15 01:33:24 2023
+# ------------------------------------------------
+
+package:
+  name: bioconductor-destiny
+  version: 3.24.0
+source:
+  url:
+    - https://www.bioconductor.org/packages/release/bioc/src/contrib/destiny_3.24.0.tar.gz
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  build:
+    - bioconductor-biobase
+    - bioconductor-biocgenerics
+    - bioconductor-pcamethods
+    - bioconductor-singlecellexperiment
+    - bioconductor-summarizedexperiment
+    - libblas
+    - libgcc-ng
+    - liblapack
+    - libstdcxx-ng
+    - r-base
+    - r-ggplot.multistats
+    - r-ggplot2
+    - r-ggthemes
+    - r-irlba
+    - r-knn.covertree
+    - r-matrix
+    - r-proxy
+    - r-rcpp
+    - r-rcppeigen
+    - r-rcpphnsw
+    - r-rspectra
+    - r-scales
+    - r-scatterplot3d
+    - r-smoother
+    - r-tidyr
+    - r-tidyselect
+    - r-vim
+  run:
+    - bioconductor-biobase
+    - bioconductor-biocgenerics
+    - bioconductor-pcamethods
+    - bioconductor-singlecellexperiment
+    - bioconductor-summarizedexperiment
+    - libblas
+    - libgcc-ng
+    - liblapack
+    - libstdcxx-ng
+    - r-base
+    - r-ggplot.multistats
+    - r-ggplot2
+    - r-ggthemes
+    - r-irlba
+    - r-knn.covertree
+    - r-matrix
+    - r-proxy
+    - r-rcpp
+    - r-rcppeigen
+    - r-rcpphnsw
+    - r-rspectra
+    - r-scales
+    - r-scatterplot3d
+    - r-smoother
+    - r-tidyr
+    - r-tidyselect
+    - r-vim
+test:
+  commands:
+    - $R -e "library('destiny')"
+about:
+  description: Create and plot diffusion maps.
+  home: https://www.bioconductor.org/packages/release/bioc/html/destiny.html
+  summary: Creates diffusion maps
+  license: GPL-3
