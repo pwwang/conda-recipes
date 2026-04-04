@@ -1,0 +1,121 @@
+# This file created by conda-build 25.7.0
+# meta.yaml template originally from:
+# /opt/recipe, last modified Mon Nov 24 04:00:19 2025
+# ------------------------------------------------
+
+package:
+  name: meme
+  version: 5.5.9
+source:
+  url: https://meme-suite.org/meme/meme-software/5.5.9/meme-5.5.9.tar.gz
+  sha256: 0406fb7b1dc27f6aab3d6d3a29ecdf617bbdd946690cfa97ca2129bc210bfd12
+build:
+  number: '0'
+requirements:
+  build:
+    - autoconf
+    - automake
+    - binutils_impl_linux-64
+    - binutils_linux-64
+    - gcc_impl_linux-64
+    - gcc_linux-64 13.4.0
+    - kernel-headers_linux-64
+    - ld_impl_linux-64
+    - libgcc
+    - libgcc-devel_linux-64
+    - libgcc-ng
+    - libgomp
+    - libltdl
+    - libsanitizer
+    - libstdcxx
+    - libtool
+    - libxcrypt
+    - m4
+    - make
+    - perl
+    - pkg-config
+    - sysroot_linux-64
+    - tzdata
+  host:
+    - ca-certificates
+    - expat
+    - ghostscript
+    - icu
+    - libexpat
+    - libgcc
+    - libgcc-ng
+    - libgomp
+    - libiconv
+    - liblzma
+    - liblzma-devel
+    - libstdcxx
+    - libstdcxx-ng
+    - libuv
+    - libxcrypt
+    - libxml2
+    - libxslt
+    - libzlib
+    - nodejs 22
+    - openssl
+    - perl 5.32
+    - xz
+    - xz-gpl-tools
+    - xz-tools
+    - zlib
+  run:
+    - icu
+    - libexpat
+    - libgcc >=13
+    - libgomp
+    - libxml2
+    - libxslt
+    - libzlib
+    - nodejs >=22.6.0,<23.0a0
+    - perl >=5.32.1,<5.33.0a0 *_perl5
+    - perl-app-cpanminus
+    - perl-cgi
+    - perl-file-which
+    - perl-html-parser
+    - perl-html-template
+    - perl-html-tree
+    - perl-json
+    - perl-log-log4perl
+    - perl-math-cdf
+    - perl-module-build
+    - perl-sys-info
+    - perl-xml-parser
+    - perl-xml-simple
+    - perl-yaml
+    - python >=3.7
+test:
+  commands:
+    - meme -version
+    - streme -version
+    - xstreme -version
+    - meme-chip -version
+    - glam2 -version
+    - tomtom -version
+    - centrimo -version
+    - ame 2>&1 | grep -i usage
+    - spamo -version
+    - gomo -version
+    - fimo -version
+    - mast -version
+    - mcast -version
+    - glam2scan -version
+    - momo simple -version
+    - getsize -version
+    - dreme -version
+about:
+  home: https://meme-suite.org
+  license: Custom
+  license_file: COPYING
+  summary: Motif-based sequence analysis tools.
+  doc_url: https://meme-suite.org/meme/doc/overview.html
+extra:
+  identifiers:
+    - biotools:meme_suite
+    - doi:10.1093/nar/gkv416
+    - usegalaxy-eu:meme_dreme
+  final: true
+  copy_test_source_files: true
