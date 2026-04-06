@@ -1,0 +1,2 @@
+unable to load shared object '/usr/share/miniconda/envs/biopipen/lib/R/library/stringfish/libs/stringfish.so':
+/usr/share/miniconda/envs/biopipen/lib/R/library/stringfish/libs/stringfish.so: undefined symbol: _ZTIN3tbb4taskE

@@ -1,0 +1,160 @@
+package:
+  name: r-stringfish
+  version: 0.18.0
+source:
+  url:
+    - https://cran.r-project.org/src/contrib/Archive/stringfish/stringfish_0.18.0.tar.gz
+    - https://cran.r-project.org/src/contrib/stringfish_0.18.0.tar.gz
+  sha256: e2df642db65b03e15e7762d7fa612bb84f7bf6b20007ceab2bfe3b93f1163aef
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  build:
+    - autoconf
+    - automake
+    - binutils_impl_linux-64
+    - binutils_linux-64
+    - gcc_impl_linux-64
+    - gcc_linux-64 14.3.0
+    - gxx_impl_linux-64
+    - gxx_linux-64
+    - kernel-headers_linux-64
+    - ld_impl_linux-64
+    - libgcc 15.2.0
+    - libgcc-devel_linux-64
+    - libgcc-ng
+    - libgomp
+    - libsanitizer
+    - libstdcxx
+    - libstdcxx-devel_linux-64
+    - libxcrypt
+    - libzlib
+    - m4
+    - make
+    - perl 5.32.1
+    - pkg-config
+    - sysroot_linux-64
+    - tzdata
+    - zstd
+  host:
+    - binutils_impl_linux-64
+    - bwidget
+    - bzip2
+    - c-ares
+    - ca-certificates
+    - cairo
+    - curl
+    - font-ttf-dejavu-sans-mono
+    - font-ttf-inconsolata
+    - font-ttf-source-code-pro
+    - font-ttf-ubuntu
+    - fontconfig
+    - fonts-conda-ecosystem
+    - fonts-conda-forge
+    - freetype
+    - fribidi
+    - gcc_impl_linux-64
+    - gfortran_impl_linux-64
+    - graphite2
+    - gsl
+    - gxx_impl_linux-64
+    - harfbuzz
+    - icu
+    - kernel-headers_linux-64
+    - keyutils
+    - krb5
+    - ld_impl_linux-64
+    - lerc
+    - libblas
+    - libcblas
+    - libcurl
+    - libdeflate
+    - libedit
+    - libev
+    - libexpat
+    - libffi
+    - libfreetype
+    - libfreetype6
+    - libgcc
+    - libgcc-devel_linux-64
+    - libgcc-ng
+    - libgfortran
+    - libgfortran-ng
+    - libgfortran5
+    - libglib
+    - libgomp
+    - libhwloc
+    - libiconv
+    - libjpeg-turbo
+    - liblapack
+    - liblzma
+    - libnghttp2
+    - libopenblas
+    - libpng
+    - libsanitizer
+    - libssh2
+    - libstdcxx
+    - libstdcxx-devel_linux-64
+    - libstdcxx-ng
+    - libtiff
+    - libuuid
+    - libwebp-base
+    - libxcb
+    - libxml2
+    - libxml2-16
+    - libzlib
+    - make
+    - ncurses
+    - openssl
+    - pango
+    - pcre2
+    - pixman
+    - pthread-stubs
+    - r-base=4.4.*
+    - r-rcpp
+    - r-rcppparallel
+    - readline
+    - sed
+    - sysroot_linux-64
+    - tbb
+    - tbb-devel
+    - tk
+    - tktable
+    - tzdata
+    - xorg-libice
+    - xorg-libsm
+    - xorg-libx11
+    - xorg-libxau
+    - xorg-libxdmcp
+    - xorg-libxext
+    - xorg-libxrender
+    - xorg-libxt
+    - zstd
+  run:
+    # - __glibc >=2.17,<3.0.a0
+    - libgcc >=14
+    - libstdcxx >=14
+    - pcre2
+    - r-base=4.4.*
+    - r-rcpp
+    - r-rcppparallel
+    - tbb
+    - tbb-devel
+test:
+  commands:
+    - $R -e "library('stringfish')"
+about:
+  home: https://github.com/traversc/stringfish
+  license: GPL-3.0-only
+  summary: Provides an extendable and performant 'alt-string' implementation backed
+    by 'C++' vectors and strings.
+  license_family: GPL3
+extra:
+  final: true
+  copy_test_source_files: true
+  flow_run_id: azure_20260123.2.1
+  remote_url: https://github.com/conda-forge/r-stringfish-feedstock
+  sha: 0ffb0e2a2e62a3b112e25c61156fdf578e136a86
