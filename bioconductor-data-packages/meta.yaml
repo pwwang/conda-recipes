@@ -1,23 +1,24 @@
 package:
-  name: 'bioconductor-data-packages'
-  version: '20260112'
-source:
+  name: bioconductor-data-packages
+  version: '20260207'
+source: {}
 build:
   number: '0'
   noarch: generic
   run_exports:
-    - {{ pin_subpackage("bioconductor-data-packages", max_pin=None) }}
+    - bioconductor-data-packages >=20260207
+  #string: hdfd78af_0
 requirements:
   run:
-    - r-base
+    - jq  # required by post-link of genomeinfodbdata
     # - curl
+    - r-base
     - yq
-    - wget
+  build: []
 test:
   commands:
     - yq --help
 about:
-  home: "https://github.com/bioconda/bioconda-utils"
-  license: 'MIT'
-  summary: 'A package to enable downloading and installation of Bioconductor data packages'
-  description: 'wget used instead of curl. curl keeps failing sometimes with errors like `curl: error while loading shared libraries: libssl.so.1.0.0`'
+  home: https://github.com/bioconda/bioconda-utils
+  license: MIT
+  summary: 'wget used instead of curl. curl keeps failing sometimes with errors like `curl: error while loading shared libraries: libssl.so.1.0.0`'

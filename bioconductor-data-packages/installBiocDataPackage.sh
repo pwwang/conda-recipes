@@ -4,13 +4,13 @@ set -ex
 
 SCRIPT_DIR="$( dirname -- "${BASH_SOURCE[0]}" )/../share/bioconductor-data-packages"
 json="${SCRIPT_DIR}/dataURLs.json"
-FN=$(yq ".\"$1\".fn" "${json}")
+FN=`yq ".\"$1\".fn" "${json}"`
 ##readarray is bash4, while OSX only has bash 3
 #readarray URLS < <(yq ".\"$1\".urls[]" "${json}")
 while IFS= read -r value; do
   URLS+=($value);
 done < <(yq ".\"$1\".urls[]" "${json}")
-MD5=$(yq ".\"$1\".md5" "${json}")
+MD5=`yq ".\"$1\".md5" "${json}"`
 
 # Use a staging area in the conda dir rather than temp dirs, both to avoid
 # permission issues as well as to have things downloaded in a predictable
@@ -21,10 +21,9 @@ TARBALL=$STAGING/$FN
 
 SUCCESS=0
 for URL in ${URLS[@]}; do
-  URL=$(echo $URL | tr -d \")  # Trim any flanking quotes
-  MD5=$(echo $MD5 | tr -d \")  # Trim any flanking quotes
-#   curl -L $URL > $TARBALL
-    wget $URL -O $TARBALL
+  URL=`echo $URL | tr -d \"`  # Trim any flanking quotes
+  MD5=`echo $MD5 | tr -d \"`  # Trim any flanking quotes
+  wget -O $TARBALL $URL
   [[ $? == 0 ]] || continue
 
   # Platform-specific md5sum checks.
