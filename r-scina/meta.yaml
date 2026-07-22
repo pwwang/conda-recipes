@@ -1,0 +1,54 @@
+
+package:
+  name: r-scina
+  version: 1.2.0
+source:
+  sha256: 4d00f20bea743d4a012aca23134816ea521f8833fd875c4691656e2e5be469bf
+  url:
+    - https://cran.r-project.org/src/contrib/Archive/SCINA/SCINA_1.2.0.tar.gz
+    - https://cran.r-project.org/src/contrib/SCINA_1.2.0.tar.gz
+
+build:
+  merge_build_host: True  # [win]
+  # If this is a new build for the same version, increment the build number.
+  number: 1
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, V8
+requirements:
+
+  build:
+    - r-base
+    - r-gplots
+    - r-mass
+
+  run:
+    - r-base
+    - r-gplots
+    - r-mass
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('SCINA')"           # [not win]
+    - "\"%R%\" -e \"library('SCINA')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/jcao89757/SCINA
+  license: GPL-3
+  summary: Automatic cell type detection and assignment algorithm for single cell RNA-Seq (scRNA-seq) and Cytof/FACS data
+  license_family: GPL3
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+    - DESCRIPTION
