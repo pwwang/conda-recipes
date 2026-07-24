@@ -1,0 +1,48 @@
+
+package:
+  name: r-openai
+  version: 0.4.1
+source:
+  url:
+    - https://cran.r-project.org/src/contrib/openai_0.4.1.tar.gz
+
+build:
+  number: 1
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+
+  build:
+    - r-base
+    - r-assertthat
+    - r-glue
+    - r-httr
+    - r-jsonlite
+    - r-lifecycle
+    - r-magrittr
+
+  run:
+    - r-base
+    - r-assertthat
+    - r-glue
+    - r-httr
+    - r-jsonlite
+    - r-lifecycle
+    - r-magrittr
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('openai')"           # [not win]
+
+about:
+  home: https://github.com/jcao89757/openai
+  license: MIT
+  summary: R interface to the OpenAI API.
+  license_family: MIT
+  license_file: LICENSE
