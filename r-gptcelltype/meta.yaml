@@ -1,0 +1,39 @@
+package:
+  name: r-gptcelltype
+  version: 1.1.1
+
+source:
+  git_url: https://github.com/Winnie09/GPTCelltype
+  git_rev: 3d2785aa96ab5f260dd075b688a9fa51654cdf0d # on May 5, 2024
+
+build:
+  number: 1
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, V8
+requirements:
+
+  build:
+    - r-base
+    - r-openai
+
+  run:
+    - r-base
+    - r-openai
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('GPTCelltype')"           # [not win]
+
+about:
+  home: https://github.com/Winnie09/GPTCelltype
+  license: MIT
+  summary: GPTCelltype R package.
+  license_family: MIT
+  license_file: LICENSE
