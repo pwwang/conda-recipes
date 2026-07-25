@@ -1,0 +1,41 @@
+# This file created by conda-build 25.7.0
+# meta.yaml template originally from:
+# /opt/recipe, last modified Sun Feb  8 07:49:44 2026
+# ------------------------------------------------
+
+package:
+  name: bioconductor-iranges
+  version: 2.44.0
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/IRanges_2.44.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/IRanges/IRanges_2.44.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/IRanges_2.44.0.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-iranges/bioconductor-iranges_2.44.0_src_all.tar.gz
+  md5: a169fe4941da3987cebbd383aa9b30f3
+build:
+  number: '1'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - bioconductor-biocgenerics
+    - bioconductor-s4vectors
+    - r-bas
+  run:
+    - bioconductor-biocgenerics
+    - bioconductor-s4vectors
+    - r-base
+test:
+  commands:
+    - $R -e "library('IRanges')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/IRanges.html
+  license: Artistic-2.0
+  summary: Foundation of integer range manipulation in Bioconductor
+  description: Provides efficient low-level and highly reusable S4 classes for storing,
+    manipulating and aggregating over annotated ranges of integers. Implements an
+    algebra of range operations, including efficient algorithms for finding overlaps
+    and nearest neighbors. Defines efficient list-like classes for storing, transforming
+    and aggregating large grouped data, i.e., collections of atomic vectors and DataFrames.

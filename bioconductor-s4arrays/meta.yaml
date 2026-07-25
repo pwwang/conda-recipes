@@ -1,0 +1,48 @@
+# This file created by conda-build 25.7.0
+# meta.yaml template originally from:
+# /opt/recipe, last modified Mon Feb  9 06:14:32 2026
+# ------------------------------------------------
+
+package:
+  name: bioconductor-s4arrays
+  version: 1.10.1
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/S4Arrays_1.10.1.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/S4Arrays/S4Arrays_1.10.1.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/S4Arrays_1.10.1.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-s4arrays/bioconductor-s4arrays_1.10.1_src_all.tar.gz
+  md5: d0b20bea4bc0a9eb10e75c929c19fcf2
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - bioconductor-biocgenerics
+    - bioconductor-iranges
+    - bioconductor-s4vectors
+    - r-abind
+    - r-base
+    - r-matrix
+  run:
+    - bioconductor-biocgenerics
+    - bioconductor-iranges
+    - bioconductor-s4vectors
+    - r-abind
+    - r-base
+    - r-matrix
+test:
+  commands:
+    - $R -e "library('S4Arrays')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/S4Arrays.html
+  license: Artistic-2.0
+  summary: Foundation of array-like containers in Bioconductor
+  description: 'The S4Arrays package defines the Array virtual class to be extended
+    by other S4 classes that wish to implement a container with an array-like semantic.
+    It also provides: (1) low-level functionality meant to help the developer of such
+    container to implement basic operations like display, subsetting, or coercion
+    of their array-like objects to an ordinary matrix or array, and (2) a framework
+    that facilitates block processing of array-like objects (typically on-disk objects).'

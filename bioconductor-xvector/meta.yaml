@@ -1,0 +1,43 @@
+# This file created by conda-build 25.7.0
+# meta.yaml template originally from:
+# /opt/recipe, last modified Mon Feb  9 06:14:32 2026
+# ------------------------------------------------
+
+package:
+  name: bioconductor-xvector
+  version: 0.50.0
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/XVector_0.50.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/XVector/XVector_0.50.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/XVector_0.50.0.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-xvector/bioconductor-xvector_0.50.0_src_all.tar.gz
+  md5: 929b5a997ee6325853057c28ca3df77d
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  build:
+    - {{ compiler('c') }}
+  host:
+    - zlib
+    - bioconductor-biocgenerics
+    - bioconductor-iranges
+    - bioconductor-s4vectors
+    - r-base
+  run:
+    - bioconductor-biocgenerics
+    - bioconductor-iranges
+    - bioconductor-s4vectors
+    - r-base
+test:
+  commands:
+    - $R -e "library('XVector')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/XVector.html
+  license: Artistic-2.0
+  summary: Foundation of external vector representation and manipulation in Bioconductor
+  description: Provides memory efficient S4 classes for storing sequences "externally"
+    (e.g. behind an R external pointer, or on disk).

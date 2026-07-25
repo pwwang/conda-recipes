@@ -1,0 +1,55 @@
+# This file created by conda-build 3.24.0
+# meta.yaml template originally from:
+# /aggregate/r-tfruns-feedstock/recipe, last modified Fri Sep 22 00:41:57 2023
+# ------------------------------------------------
+
+package:
+  name: r-tfruns
+  version: 1.5.1
+source:
+  sha256: e8f5cb8900607e33aa5530181b01daf21c5bfb669e77940e2930b41e0a6d67f6
+  url:
+    - https://cran.r-project.org/src/contrib/Archive/tfruns/tfruns_1.5.1.tar.gz
+    - https://cran.r-project.org/src/contrib/tfruns_1.5.1.tar.gz
+build:
+  noarch: generic
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  build: []
+  host:
+    - r-base
+    - r-base64enc
+    - r-config
+    - r-jsonlite
+    - r-magrittr
+    - r-reticulate
+    - r-rlang
+    - r-rstudioapi
+    - r-tidyselect
+    - r-whisker
+    - r-yaml
+  run:
+    - r-base
+    - r-base64enc
+    - r-config
+    - r-jsonlite
+    - r-magrittr
+    - r-reticulate
+    - r-rlang
+    - r-rstudioapi
+    - r-tidyselect
+    - r-whisker
+    - r-yaml
+test:
+  commands:
+    - $R -e "library('tfruns')"
+about:
+  home: https://github.com/rstudio/tfruns
+  license: Apache License 2.0
+  license_family: APACHE
+  summary: Create and manage unique directories for each 'TensorFlow' training run.
+    Provides a unique, time stamped directory for each run along with functions to
+    retrieve the directory of the latest run or latest several runs.

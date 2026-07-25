@@ -1,0 +1,39 @@
+# This file created by conda-build 3.24.0
+# meta.yaml template originally from:
+# /aggregate/r-config-feedstock/recipe, last modified Fri Sep 22 00:41:57 2023
+# ------------------------------------------------
+
+package:
+  name: r-config
+  version: 0.3.2
+source:
+  sha256: 7b5c21c2b86d5ba88d6e888bc614d5633f4fb5c0b50bb498a529c32ccf931065
+  url:
+    - https://cran.r-project.org/src/contrib/Archive/config/config_0.3.2.tar.gz
+    - https://cran.r-project.org/src/contrib/config_0.3.2.tar.gz
+build:
+  noarch: generic
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  build: []
+  host:
+    - r-base
+    - r-yaml
+  run:
+    - r-base
+    - r-yaml
+test:
+  commands:
+    - $R -e "library('config')"
+about:
+  home: https://rstudio.github.io/config/, https://github.com/rstudio/config
+  license: GPL-3
+  license_family: GPL3
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  summary: Manage configuration values across multiple environments (e.g. development,
+    test, production). Read values using a function that determines the current environment
+    and returns the appropriate value.

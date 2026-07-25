@@ -1,0 +1,52 @@
+
+package:
+  name: bioconductor-sparsearray
+  version: 1.10.8
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/SparseArray_1.10.8.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/SparseArray/SparseArray_1.10.8.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/SparseArray_1.10.8.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-sparsearray/bioconductor-sparsearray_1.10.8_src_all.tar.gz
+  md5: 8dc81480e3e0186a7848fc105c78db8c
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - bioconductor-biocgenerics
+    - bioconductor-iranges
+    - bioconductor-matrixgenerics
+    - bioconductor-s4arrays
+    - bioconductor-s4vectors
+    - bioconductor-xvector
+    - r-base
+    - r-matrix
+    - r-matrixstats
+  run:
+    - bioconductor-biocgenerics
+    - bioconductor-iranges
+    - bioconductor-matrixgenerics
+    - bioconductor-s4arrays
+    - bioconductor-s4vectors
+    - bioconductor-xvector
+    - r-base
+    - r-matrix
+    - r-matrixstats
+test:
+  commands:
+    - $R -e "library('SparseArray')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/SparseArray.html
+  license: Artistic-2.0
+  summary: High-performance sparse data representation and manipulation in R
+  description: 'The SparseArray package provides array-like containers for efficient
+    in-memory representation of multidimensional sparse data in R (arrays and matrices).
+    The package defines the SparseArray virtual class and two concrete subclasses:
+    COO_SparseArray and SVT_SparseArray. Each subclass uses its own internal representation
+    of the nonzero multidimensional data: the "COO layout" and the "SVT layout", respectively.
+    SVT_SparseArray objects mimic as much as possible the behavior of ordinary matrix
+    and array objects in base R. In particular, they suppport most of the "standard
+    matrix and array API" defined in base R and in the matrixStats package from CRAN.'

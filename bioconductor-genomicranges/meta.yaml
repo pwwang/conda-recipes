@@ -1,0 +1,44 @@
+
+package:
+  name: bioconductor-genomicranges
+  version: 1.62.1
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/GenomicRanges_1.62.1.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/GenomicRanges/GenomicRanges_1.62.1.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/GenomicRanges_1.62.1.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-genomicranges/bioconductor-genomicranges_1.62.1_src_all.tar.gz
+  md5: aa38e9c50dd8981e4db04cc5beee8078
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - bioconductor-biocgenerics
+    - bioconductor-iranges
+    - bioconductor-s4vectors
+    - bioconductor-seqinfo
+    - r-base
+  run:
+    - bioconductor-biocgenerics
+    - bioconductor-iranges
+    - bioconductor-s4vectors
+    - bioconductor-seqinfo
+    - r-base
+test:
+  commands:
+    - $R -e "library('GenomicRanges')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/GenomicRanges.html
+  license: Artistic-2.0
+  summary: Representation and manipulation of genomic intervals
+  description: The ability to efficiently represent and manipulate genomic annotations
+    and alignments is playing a central role when it comes to analyzing high-throughput
+    sequencing data (a.k.a. NGS data). The GenomicRanges package defines general purpose
+    containers for storing and manipulating genomic intervals and variables defined
+    along a genome. More specialized containers for representing and manipulating
+    short alignments against a reference genome, or a matrix-like summarization of
+    an experiment, are defined in the GenomicAlignments and SummarizedExperiment packages,
+    respectively. Both packages build on top of the GenomicRanges infrastructure.

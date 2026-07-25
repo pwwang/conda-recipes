@@ -1,0 +1,39 @@
+# This file created by conda-build 3.24.0
+# meta.yaml template originally from:
+# /aggregate/r-tfautograph-feedstock/recipe, last modified Fri Sep 22 00:41:57 2023
+# ------------------------------------------------
+
+package:
+  name: r-tfautograph
+  version: 0.3.2
+source:
+  sha256: 42821583679d32fa4abb4304b6831e8c3b4dce9468e1a3b570af7bf95ec0aa3a
+  url:
+    - https://cran.r-project.org/src/contrib/Archive/tfautograph/tfautograph_0.3.2.tar.gz
+    - https://cran.r-project.org/src/contrib/tfautograph_0.3.2.tar.gz
+build:
+  noarch: generic
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  build: []
+  host:
+    - r-backports
+    - r-base
+    - r-reticulate
+  run:
+    - r-backports
+    - r-base
+    - r-reticulate
+test:
+  commands:
+    - $R -e "library('tfautograph')"
+about:
+  home: https://t-kalinowski.github.io/tfautograph/
+  license: GPL-3
+  license_family: GPL3
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  summary: Translate R control flow expressions into 'Tensorflow' graphs.

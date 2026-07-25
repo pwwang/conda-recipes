@@ -1,0 +1,46 @@
+# This file created by conda-build 25.7.0
+# meta.yaml template originally from:
+# /opt/recipe, last modified Mon Feb  9 06:14:32 2026
+# ------------------------------------------------
+
+package:
+  name: bioconductor-seqinfo
+  version: 1.0.0
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/Seqinfo_1.0.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/Seqinfo/Seqinfo_1.0.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Seqinfo_1.0.0.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-seqinfo/bioconductor-seqinfo_1.0.0_src_all.tar.gz
+  md5: 10585f976146cbcf32a4ce7d46a18709
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - bioconductor-biocgenerics
+    - bioconductor-iranges >=2.40
+    - r-base
+    - r-generics
+  run:
+    - bioconductor-biocgenerics
+    - bioconductor-iranges >=2.40
+    - r-base
+    - r-generics
+test:
+  commands:
+    - $R -e "library('Seqinfo')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/Seqinfo.html
+  license: Artistic-2.0
+  summary: A simple S4 class for storing basic information about a collection of genomic
+    sequences
+  description: The Seqinfo class stores the names, lengths, circularity flags, and
+    genomes for a particular collection of sequences. These sequences are typically
+    the chromosomes and/or scaffolds of a specific genome assembly of a given organism.
+    Seqinfo objects are rarely used as standalone objects. Instead, they are used
+    as part of higher-level objects to represent their seqinfo() component. Examples
+    of such higher-level objects are GRanges, RangedSummarizedExperiment, VCF, GAlignments,
+    etc... defined in other Bioconductor infrastructure packages.

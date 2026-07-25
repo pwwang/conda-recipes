@@ -1,0 +1,53 @@
+# This file created by conda-build 25.7.0
+# meta.yaml template originally from:
+# /opt/recipe, last modified Thu Feb 26 14:42:55 2026
+# ------------------------------------------------
+
+package:
+  name: bioconductor-delayedarray
+  version: 0.36.0
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/DelayedArray_0.36.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/DelayedArray/DelayedArray_0.36.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/DelayedArray_0.36.0.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-delayedarray/bioconductor-delayedarray_0.36.0_src_all.tar.gz
+  md5: 57b2fd485d73f5dc5fcb65ec23e16429
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - bioconductor-biocgenerics
+    - bioconductor-iranges
+    - bioconductor-matrixgenerics
+    - bioconductor-s4arrays
+    - bioconductor-s4vectors
+    - bioconductor-sparsearray
+    - r-base
+    - r-matrix
+  run:
+    - bioconductor-biocgenerics
+    - bioconductor-iranges
+    - bioconductor-matrixgenerics
+    - bioconductor-s4arrays
+    - bioconductor-s4vectors
+    - bioconductor-sparsearray
+    - r-base
+    - r-matrix
+test:
+  commands:
+    - $R -e "library('DelayedArray')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/DelayedArray.html
+  license: Artistic-2.0
+  summary: A unified framework for working transparently with on-disk and in-memory
+    array-like datasets
+  description: Wrapping an array-like object (typically an on-disk object) in a DelayedArray
+    object allows one to perform common array operations on it without loading the
+    object in memory. In order to reduce memory usage and optimize performance, operations
+    on the object are either delayed or executed using a block processing mechanism.
+    Note that this also works on in-memory array-like objects like DataFrame objects
+    (typically with Rle columns), Matrix objects, ordinary arrays and, data frames.
