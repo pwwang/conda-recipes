@@ -1,0 +1,63 @@
+package:
+  name: r-stacas
+  version: 2.4.1
+
+source:
+  git_url: https://github.com/carmonalab/STACAS
+  git_rev: ea34e824e17df6316823db0a9b6322af0833e501 # on Jan 27, 2026
+
+build:
+  number: 1
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+
+  host:
+    - r-base
+    - r-seurat
+    - r-seuratobject
+    - r-data.table
+    - r-pbapply
+    - r-ggridges
+    - r-colorspace
+    - r-r.utils
+    - r-ggplot2
+    - bioconductor-biocneighbors
+    - bioconductor-biocparallel
+
+  run:
+    - r-base
+    - r-seurat
+    - r-seuratobject
+    - r-data.table
+    - r-pbapply
+    - r-ggridges
+    - r-colorspace
+    - r-r.utils
+    - r-ggplot2
+    - bioconductor-biocneighbors
+    - bioconductor-biocparallel
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('STACAS')"           # [not win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/carmonalab/STACAS
+  license: GPL-3
+  summary: STACAS is a method for scRNA-seq integration or batch effect correction. Through an open-source benchmark, we showed that STACAS outperforms competing methods such as Harmony, Seurat, and scVI/scANVI.
+  license_family: GPL3
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
