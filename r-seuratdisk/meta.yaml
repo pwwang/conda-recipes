@@ -1,13 +1,14 @@
 {% set name = "r-seuratdisk" %}
-{% set version = "0.0.9020" %}
+{% set version = "0.1.9021" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  git_url: https://github.com/mojaveazure/seurat-disk
-  git_rev: 9b89970eac2a3bd770e744f63c7763419486b14c  # on 2022.04.22
+  # With GetAssayData slot deprecation fixed
+  git_url: https://github.com/LinearParadox/seurat-disk
+  git_rev: 752413c0f32b0a3a483da3c24d583b3f699ce189  # on Feb 3, 2026
 
 build:
   number: 0
@@ -18,6 +19,7 @@ build:
 
 requirements:
     host:
+        - r-base
         - r-seurat
         - r-devtools
         - r-crayon
@@ -28,6 +30,7 @@ requirements:
         - r-stringi
         - r-withr
     run:
+        - r-base
         - r-seurat
         - r-crayon
         - r-hdf5r
@@ -59,4 +62,5 @@ about:
         spatial coordinates and image data, and cluster labels. We also support
         rapid and on-disk conversion between h5Seurat and AnnData objects,
         with the goal of enhancing interoperability between Seurat and Scanpy.
+        Fixed for GetAssayData slot deprecation in Seurat v5.0.0.
   license_family: GPL
