@@ -1,4 +1,4 @@
-{% set version = '2.0.4' %}
+{% set version = '2.0.6' %}
 
 package:
   name: r-doubletfinder
@@ -6,7 +6,7 @@ package:
 
 source:
   git_url: https://github.com/chris-mcginnis-ucsf/DoubletFinder
-  git_rev: 853e2de13ac4a826d8f70900c9baf10cbf43a9c7 # on Nov 21, 2023
+  git_rev: 1b244d8f0d54b4b1cb4365639931bbb16f01e1cd # on Mar 21, 2025
 
 build:
   # If this is a new build for the same version, increment the build number.
