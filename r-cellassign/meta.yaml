@@ -6,30 +6,28 @@ source:
   git_url: https://github.com/sbwiecko/cellassign
   git_rev: c42a03521908018693d5cb4e8628f17608f9f8a8
 build:
-  number: '1'
+  number: '3'
   rpaths:
     - lib/
     - lib/R/lib/
 requirements:
   host:
-    - python=3.7
     - bioconductor-genomeinfodbdata
     - bioconductor-scran
     - bioconductor-summarizedexperiment
     - r-base
     - r-glue
-    - r-tensorflow
-    - tensorflow=2.1.0
+    - r-tensorflow=2.16.0
+    - tensorflow
     - tensorflow-probability
   run:
-    - python=3.7
     - bioconductor-genomeinfodbdata
     - bioconductor-scran
     - bioconductor-summarizedexperiment
     - r-base
     - r-glue
-    - r-tensorflow
-    - tensorflow=2.1.0
+    - r-tensorflow=2.16.0
+    - tensorflow
     - tensorflow-probability
 test:
   commands:
@@ -39,6 +37,3 @@ about:
   license: Apache-2.0
   summary: Automated, probabilistic assignment of cell types in scRNA-seq data,
     with https://github.com/Irrationone/cellassign/issues/92 fixed
-extra:
-  copy_test_source_files: true
-  final: true
