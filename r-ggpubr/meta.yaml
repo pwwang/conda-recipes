@@ -1,0 +1,72 @@
+package:
+  name: r-ggpubr
+  version: 2026.9.5
+
+source:
+  git_url: https://github.com/kassambara/ggpubr
+  git_rev: e46af48626049ece687e13ade833cc0ea43c9252 # on 2026/07/31
+
+build:
+  number: 1
+  # no skip
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, V8
+requirements:
+
+  build:
+    - r-base
+    - r-cowplot
+    - r-dplyr >=0.7.1
+    - r-ggplot2
+    - r-ggrepel
+    - r-ggsci
+    - r-ggsignif
+    - r-glue
+    - r-gridextra
+    - r-magrittr
+    - r-polynom
+    - r-purrr
+    - r-rlang
+    - r-rstatix
+    - r-scales
+    - r-tidyr
+
+  run:
+    - r-base
+    - r-cowplot
+    - r-dplyr >=0.7.1
+    - r-ggplot2
+    - r-ggrepel
+    - r-ggsci
+    - r-ggsignif
+    - r-glue
+    - r-gridextra
+    - r-magrittr
+    - r-polynom
+    - r-purrr
+    - r-rlang
+    - r-rstatix
+    - r-scales
+    - r-tidyr
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('ggpubr')"
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://rpkgs.datanovia.com/ggpubr/
+  license: GPL-2.0-only
+  summary: ggpubr with PR https://github.com/kassambara/ggpubr/pull/752
+  license_family: GPL2
