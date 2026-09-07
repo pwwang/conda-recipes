@@ -1,0 +1,65 @@
+package:
+  name: r-autozyme
+  version: 0.3.2
+
+source:
+  # Upstream has no release tags yet — pinned to commit 4025b6b (v0.3.2 per DESCRIPTION).
+  # Swap to url: https://github.com/ElliotXie/autozyme/archive/refs/tags/v{{ version }}.tar.gz
+  # once upstream tags releases.
+  git_url: https://github.com/ElliotXie/autozyme
+  git_rev: 4025b6bb9218a6608e2126afbfc9a44fbf4483df
+
+build:
+  number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+  build:
+    - r-base
+    - r-rcpp
+    - r-rcppparallel
+    - r-rcpparmadillo
+    - r-bh
+    - r-rcppeigen
+    - r-rcppannoy
+    - r-rcppdist
+    - r-data.table
+    # - tbb =2021
+  run:
+    - r-base
+    - r-rcpp
+    - r-rcppparallel
+    - r-rcpparmadillo
+    - r-bh
+    - r-rcppeigen
+    - r-rcppannoy
+    - r-rcppdist
+    - r-data.table
+    # - tbb =2021
+
+test:
+  commands:
+    - $R -e "library('autozyme')"
+
+about:
+  home: https://github.com/ElliotXie/autozyme
+  dev_url: https://github.com/ElliotXie/autozyme
+  doc_url: https://autozyme.com/docs
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: "Drop-in accelerators for scientific R packages"
+  description: |
+    A registry of validated, monkey-patched fast replacements for hot functions
+    in scientific R packages (Seurat, nichenetr, slingshot, etc.). Patches are
+    activated per package (autozyme::activate("seurat")) and can be toggled per
+    call (zyme = FALSE), per package (deactivate), or globally
+    (AUTOZYME_DISABLED). C++ (Rcpp/RcppParallel) kernels are compiled at install.
+
+extra:
+  recipe-maintainers:
+    - pwwang
