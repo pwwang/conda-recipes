@@ -1,0 +1,42 @@
+package:
+  name: r-mllmcelltype
+  version: 2.0.8
+
+source:
+  git_url: https://github.com/cafferychen777/mLLMCelltype
+  git_tag: v2.0.8
+
+build:
+  number: 1
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+
+  host:
+    - r-base
+    - r-httr
+    - r-jsonlite
+    - r-r6
+    - r-digest
+    - r-seurat
+
+  run:
+    - r-base
+    - r-httr
+    - r-jsonlite
+    - r-r6
+    - r-digest
+    - r-seurat
+
+test:
+  commands:
+    - $R -e "library('mLLMCelltype')"
+
+
+about:
+  home: https://github.com/cafferychen777/mLLMCelltype
+  license: MIT
+  summary: Cell type annotation for single-cell RNA-seq using multi-LLM consensus
+  license_family: MIT
