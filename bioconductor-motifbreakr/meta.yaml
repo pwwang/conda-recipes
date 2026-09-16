@@ -5,31 +5,40 @@
 
 package:
   name: bioconductor-motifbreakr
-  version: 2.19.5
+  version: 2.27.2
 source:
   git_url: https://github.com/Simon-Coetzee/motifBreakR
-  git_rev: cb55b0ba89e8bb4eae8b9f2f37b0b927c58f587e
+  git_rev: 21d39f8cc6ed7f8ef8aebedd792ffb2ebf101a6b
 build:
-  number: '0'
+  number: '2'
   rpaths:
     - lib/
     - lib/R/lib/
 requirements:
   build:
+    # methods, grDevices, stringr, parallel,
+    # BiocGenerics, S4Vectors (>= 0.9.25), IRanges, GenomeInfoDb,
+    # GenomicRanges, Biostrings, BSgenome, rtracklayer, VariantAnnotation,
+    # BiocParallel, motifStack, Gviz, matrixStats, TFMPvalue,
+    # SummarizedExperiment, pwalign, DT, bsicons, BiocFileCache, biomaRt,
+    # bslib, shiny, vroom
     - bioconductor-biocgenerics
     - bioconductor-biocparallel
     - bioconductor-biostrings
-    - bioconductor-bsgenome
+    - bioconductor-bsgenome >=1.70.0
     - bioconductor-genomeinfodb
     - bioconductor-genomicranges
     - bioconductor-gviz
     - bioconductor-iranges
     - bioconductor-motifdb
-    - bioconductor-motifstack
+    - bioconductor-motifstack >=1.50.0
     - bioconductor-rtracklayer
     - bioconductor-s4vectors
     - bioconductor-summarizedexperiment
     - bioconductor-variantannotation
+    - bioconductor-pwalign
+    - bioconductor-biocfilecache
+    - bioconductor-biomart
     - r-base
     - r-matrixstats
     - r-stringr
@@ -37,21 +46,26 @@ requirements:
     - r-dt
     - r-bsicons
     - r-shiny
+    - r-bslib
+    - r-vroom
   run:
     - bioconductor-biocgenerics
     - bioconductor-biocparallel
     - bioconductor-biostrings
-    - bioconductor-bsgenome
+    - bioconductor-bsgenome >=1.70.0
     - bioconductor-genomeinfodb
     - bioconductor-genomicranges
     - bioconductor-gviz
     - bioconductor-iranges
     - bioconductor-motifdb
-    - bioconductor-motifstack
+    - bioconductor-motifstack >=1.50.0
     - bioconductor-rtracklayer
     - bioconductor-s4vectors
     - bioconductor-summarizedexperiment
     - bioconductor-variantannotation
+    - bioconductor-pwalign
+    - bioconductor-biocfilecache
+    - bioconductor-biomart
     - r-base
     - r-matrixstats
     - r-stringr
@@ -59,6 +73,8 @@ requirements:
     - r-dt
     - r-bsicons
     - r-shiny
+    - r-bslib
+    - r-vroom
 test:
   commands:
     - $R -e "library('motifbreakR')"
@@ -74,7 +90,7 @@ about:
     public databases, making it suitable for tasks beyond the scope of its original
     design. Lastly, it can be used to interrogate any genome curated within Bioconductor
     (currently there are 32 species, a total of 109 versions).
-  home: https://bioconductor.org/packages/3.18/bioc/html/motifbreakR.html
+  home: https://github.com/Simon-Coetzee/motifBreakR
   license: GPL-2
   summary: A Package For Predicting The Disruptiveness Of Single Nucleotide Polymorphisms
     On Transcription Factor Binding Sites
