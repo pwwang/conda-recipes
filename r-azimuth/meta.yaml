@@ -1,0 +1,111 @@
+{% set name = "r-azimuth" %}
+{% set version = "0.5.0" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/satijalab/azimuth/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 0001e425d48a6f4ed71b99239d414285a09d06a138c393ad2227e186ef34c38f
+
+build:
+  number: 10
+  script:
+    - export DISABLE_AUTOBREW=1
+    - $R CMD INSTALL --build . $R_ARGS
+  run_exports:
+    - {{ pin_subpackage(name, max_pin="x.x") }}
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - r-base
+    - bioconductor-bsgenome.hsapiens.ucsc.hg38
+    - r-dt
+    - bioconductor-ensdb.hsapiens.v86
+    - r-matrix
+    - r-rcpp
+    - r-seurat
+    - r-seurat-data
+    - r-seurat-disk
+    - r-seuratobject
+    - r-future
+    - r-ggplot2
+    - bioconductor-glmgampoi
+    - r-googlesheets4
+    - r-hdf5r
+    - r-htmltools
+    - r-httr
+    - bioconductor-jaspar2020
+    - r-jsonlite
+    - r-patchwork
+    - r-plotly
+    - r-presto
+    - r-rlang
+    - r-scales
+    - r-shiny
+    - r-shinybs
+    - r-shinydashboard
+    - r-shinyjs
+    - r-signac
+    - r-stringr
+    - bioconductor-tfbstools
+    - r-withr
+  run:
+    - r-base
+    - r-dt
+    - bioconductor-ensdb.hsapiens.v86
+    - r-matrix
+    - r-rcpp
+    - r-seurat
+    - r-seurat-data
+    - r-seurat-disk
+    - r-seuratobject
+    - r-future
+    - r-ggplot2
+    - bioconductor-glmgampoi
+    - r-googlesheets4
+    - r-hdf5r
+    - r-htmltools
+    - r-httr
+    - bioconductor-jaspar2020
+    - r-jsonlite
+    - r-patchwork
+    - r-plotly
+    - r-presto
+    - r-rlang
+    - r-scales
+    - r-shiny
+    - r-shinybs
+    - r-shinydashboard
+    - r-shinyjs
+    - r-signac
+    - r-stringr
+    - bioconductor-tfbstools
+    - r-withr
+
+test:
+  commands:
+    - '$R -e "library(''Azimuth'')"'
+
+about:
+  home: "https://github.com/satijalab/azimuth"
+  license: "GPL-3.0-only"
+  summary: "Azimuth is a Shiny app demonstrating a query-reference mapping algorithm for single-cell data."
+  license_family: GPL3
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+    - LICENSE
+  dev_url: "https://github.com/satijalab/azimuth"
+  doc_url: "https://satijalab.org/azimuth"
+
+extra:
+  additional-platforms:
+    - osx-arm64
+    - linux-aarch64
