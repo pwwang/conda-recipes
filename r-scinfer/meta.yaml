@@ -1,0 +1,53 @@
+{% set name = "r-scinfer" %}
+{% set version = "0.0.1" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/swainasish/ScInfeR
+  git_rev: 5bafa495b05f4be241741d9d53ca4b217f972de7  # on Sep 10, 2026
+
+build:
+  number: 0
+  rpaths:
+    - lib/R/lib/
+    - lib/
+  script:
+    - export DISABLE_AUTOBREW=1
+    - $R CMD INSTALL --build . $R_ARGS
+
+requirements:
+
+  host:
+    - r-base
+    - r-seurat >=5.1.0
+    - r-presto
+    - r-lsa
+    - r-fnn
+    - r-dplyr
+    - r-logr
+    - r-openxlsx
+
+  run:
+    - r-base
+    - r-seurat >=5.1.0
+    - r-presto
+    - r-lsa
+    - r-fnn
+    - r-dplyr
+    - r-logr
+    - r-openxlsx
+
+test:
+  commands:
+    - $R -e "library(ScInfeR)"   # [not win]
+
+about:
+  home: https://github.com/swainasish/ScInfeR
+  license: GPL-3
+  license_family: GPL
+  summary: Graph-based cell type annotation toolkit for single-cell RNA-seq, ATAC-seq, and spatial omics
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
