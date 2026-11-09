@@ -1,86 +1,81 @@
 {% set name = "bioconductor-screpertoire" %}
-{% set version = "2.2.1" %}
+{% set version = "2.7.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  git_url: https://github.com/ncborcherding/scRepertoire
-  git_rev: 08e80abcaf1e45adbc59428788ca1c32904c9644
+  url: https://github.com/BorchLab/scRepertoire/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 11c4f2442a9fc7dd8a8dda999b5608aff138b27569c7f456ff25fa2cf70b3402
 
 build:
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
-    host:
-        - conda-forge::r-assertthat
-        - conda-forge::r-cubature
-        - conda-forge::r-dplyr
-        - conda-forge::r-evmix
-        - conda-forge::r-ggalluvial
-        - conda-forge::r-ggdendro
-        - conda-forge::r-ggraph
-        - conda-forge::r-igraph
-        - conda-forge::r-inext
-        - conda-forge::r-plyr
-        - conda-forge::r-quantreg
-        - conda-forge::r-rcpp
-        - conda-forge::r-reshape2
-        - conda-forge::r-rjson
-        - conda-forge::r-rlang
-        - bioconda::bioconductor-s4vectors
-        - conda-forge::r-seuratobject
-        - bioconda::bioconductor-singlecellexperiment
-        - conda-forge::r-stringr
-        - conda-forge::r-stringdist
-        - bioconda::bioconductor-summarizedexperiment
-        - conda-forge::r-tidygraph
-        - conda-forge::r-truncdist
-        - conda-forge::r-vgam
-        - conda-forge::r-hash
+  host:
+    - r-base
+    - bioconductor-s4vectors
+    - bioconductor-singlecellexperiment
+    - bioconductor-summarizedexperiment
+    - bioconductor-immapex >=1.4.0,<1.5
+    - r-dplyr
+    - r-evmix
+    - r-ggalluvial
+    - r-ggplot2
+    - r-ggdendro
+    - r-ggraph
+    - r-igraph
+    - r-inext
+    - r-lifecycle
+    - r-matrix
+    - r-purrr
+    - r-quantreg
+    - r-rcpp
+    - r-rjson
+    - r-rlang
+    - r-seuratobject
+    - r-tidygraph
 
-    run:
-        - conda-forge::r-assertthat
-        - conda-forge::r-cubature
-        - conda-forge::r-dplyr
-        - conda-forge::r-evmix
-        - conda-forge::r-ggalluvial
-        - conda-forge::r-ggdendro
-        - conda-forge::r-ggraph
-        - conda-forge::r-igraph
-        - conda-forge::r-inext
-        - conda-forge::r-plyr
-        - conda-forge::r-quantreg
-        - conda-forge::r-rcpp
-        - conda-forge::r-reshape2
-        - conda-forge::r-rjson
-        - conda-forge::r-rlang
-        - bioconda::bioconductor-s4vectors
-        - conda-forge::r-seuratobject
-        - bioconda::bioconductor-singlecellexperiment
-        - conda-forge::r-stringr
-        - conda-forge::r-stringdist
-        - bioconda::bioconductor-summarizedexperiment
-        - conda-forge::r-tidygraph
-        - conda-forge::r-truncdist
-        - conda-forge::r-vgam
-        - conda-forge::r-hash
+  run:
+    - r-base
+    - bioconductor-s4vectors
+    - bioconductor-singlecellexperiment
+    - bioconductor-summarizedexperiment
+    - bioconductor-immapex >=1.4.0,<1.5
+    - r-dplyr
+    - r-evmix
+    - r-ggalluvial
+    - r-ggplot2
+    - r-ggdendro
+    - r-ggraph
+    - r-igraph
+    - r-inext
+    - r-lifecycle
+    - r-matrix
+    - r-purrr
+    - r-quantreg
+    - r-rcpp
+    - r-rjson
+    - r-rlang
+    - r-seuratobject
+    - r-tidygraph
 
 test:
-    commands:
-        - $R -e 'library(scRepertoire)'
+  commands:
+    - $R -e "library('scRepertoire')"
+    - $R -e "library('scRepertoire'); stopifnot(packageVersion('immApex') >= '1.4.0', packageVersion('scRepertoire') == '2.7.3')"
 
 about:
-  home: https://github.com/ncborcherding/scRepertoire
-  dev_url: https://github.com/ncborcherding/scRepertoire
+  home: https://github.com/BorchLab/scRepertoire
+  dev_url: https://github.com/BorchLab/scRepertoire
   license: MIT
   license_file: LICENSE
+  license_family: MIT
   summary: 'A toolkit for single-cell immune profiling'
   description: |
     Single-cell sequencing is an emerging technology in the field of immunology and oncology that allows researchers to
     couple RNA quantification and other modalities, like immune cell receptor profiling at the level of an individual cell.
-  license_family: MIT
