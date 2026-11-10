@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# 'Autobrew' is being used by more and more packages these days
+# to grab static libraries from Homebrew bottles. These bottles
+# are fetched via Homebrew's --force-bottle option which grabs
+# a bottle for the build machine which may not be macOS 10.9.
+# Also, we want to use conda packages (and shared libraries) for
+# these 'system' dependencies. See:
+# https://github.com/jeroen/autobrew/issues/3
+export DISABLE_AUTOBREW=1
+
+# R refuses to build packages that mark themselves as Priority: Recommended
+mv DESCRIPTION DESCRIPTION.old
+grep -va '^Priority: ' DESCRIPTION.old > DESCRIPTION
+
+# Package source predates C23 ('double sqrt();' etc.); GCC 14+ treats () as (void)
+echo 'PKG_CFLAGS = -std=gnu17' >> src/Makevars
+# Legacy 'PI' macro was removed from R's headers in R 4.2
+sed -i 's/\bPI\b/M_PI/g' src/sphevol.c
+# shellcheck disable=SC2086
+${R} CMD INSTALL --build . ${R_ARGS}
+
+# Add more build steps here, if they are necessary.
+
+# See
+# https://docs.conda.io/projects/conda-build
+# for a list of environment variables that are set during the build process.

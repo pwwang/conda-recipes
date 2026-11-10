@@ -1,0 +1,52 @@
+
+package:
+  name: r-spatstat.core
+  version: '2.4_4'
+source:
+  sha256: e38c39efe8b14d6e8fdbee8dd870b90c52f78ea571ab7988fd3685f48347d13b
+  url:
+    - https://cran.r-project.org/src/contrib/Archive/spatstat.core/spatstat.core_2.4-4.tar.gz
+    - https://cran.r-project.org/src/contrib/spatstat.core_2.4-4.tar.gz
+build:
+  number: '1'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - r-base
+    - r-spatstat.data
+    - r-spatstat.geom
+    - r-spatstat.random
+    - r-spatstat.sparse
+    - r-spatstat.utils
+    - r-nlme
+    - r-rpart
+    - r-matrix
+    - r-mgcv
+    - r-abind
+    - r-goftest
+    - r-tensor
+  run:
+    - r-base
+    - r-spatstat.data
+    - r-spatstat.geom
+    - r-spatstat.random
+    - r-spatstat.sparse
+    - r-spatstat.utils
+    - r-nlme
+    - r-rpart
+    - r-matrix
+    - r-mgcv
+    - r-abind
+    - r-goftest
+    - r-tensor
+test:
+  commands:
+    - $R -e "library('spatstat.core')"
+about:
+  home: http://spatstat.org/
+  license: GPL-2.0-or-later
+  license_family: GPL2
+  summary: This is a subset of the original 'spatstat' package, containing all of
+    the user-level code from 'spatstat', except for the code for linear networks.
