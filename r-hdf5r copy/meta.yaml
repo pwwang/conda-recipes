@@ -1,0 +1,157 @@
+package:
+  name: r-monocle3
+  version: 1.4.27
+source:
+  url: https://github.com/cole-trapnell-lab/monocle3/archive/v1.4.27.tar.gz
+  sha256: 34618523d3a96557af3e8980f88ddd42df4134ae0f8043d5f9ed44df29716952
+build:
+  number: '0'
+  script:
+    - export DISABLE_AUTOBREW=1
+    - export LC_ALL="en_US.UTF-8"
+    - ${R} CMD INSTALL --build --install-tests . "${R_ARGS}"
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - bioconductor-batchelor
+    - bioconductor-biobase
+    - bioconductor-biocgenerics
+    - bioconductor-delayedarray
+    - bioconductor-delayedmatrixstats
+    - bioconductor-hdf5array
+    - bioconductor-limma
+    - bioconductor-s4vectors
+    - bioconductor-singlecellexperiment
+    - bioconductor-summarizedexperiment
+    - libgcc
+    - libstdcxx
+    - r-assertthat
+    - r-base
+    - r-bpcells
+    - r-dplyr
+    - r-ggdist
+    - r-ggforce
+    - r-ggplot2
+    - r-ggrastr
+    - r-ggrepel
+    - r-grr
+    - r-htmlwidgets
+    - r-igraph
+    - r-irlba
+    - r-knitr
+    - r-leidenbase
+    - r-lme4
+    - r-lmtest
+    - r-mass
+    - r-matrix
+    - r-matrix.utils
+    - r-pbapply
+    - r-pbmcapply
+    - r-pheatmap
+    - r-plotly
+    - r-plyr
+    - r-proxy
+    - r-pryr
+    - r-pscl
+    - r-purrr
+    - r-rann
+    - r-rcpp
+    - r-rcpphnsw
+    - r-rcppparallel
+    - r-reshape2
+    - r-reticulate
+    - r-rhpcblasctl
+    - r-rmarkdown
+    - r-rsample
+    - r-rtsne
+    - r-shiny
+    - r-slam
+    - r-spdep
+    - r-speedglm
+    - r-spelling
+    - r-stringr
+    - r-terra
+    - r-testthat
+    - r-tibble
+    - r-tidyr
+    - r-uwot
+    - r-viridis
+    - tbb-devel
+  run:
+    - bioconductor-batchelor
+    - bioconductor-biobase
+    - bioconductor-biocgenerics
+    - bioconductor-delayedarray
+    - bioconductor-delayedmatrixstats
+    - bioconductor-hdf5array
+    - bioconductor-limma
+    - bioconductor-s4vectors
+    - bioconductor-singlecellexperiment
+    - bioconductor-summarizedexperiment
+    - libgcc
+    - libstdcxx
+    - r-assertthat
+    - r-base
+    - r-bpcells
+    - r-dplyr
+    - r-ggdist
+    - r-ggforce
+    - r-ggplot2
+    - r-ggrastr
+    - r-ggrepel
+    - r-grr
+    - r-htmlwidgets
+    - r-igraph
+    - r-irlba
+    - r-knitr
+    - r-leidenbase
+    - r-lme4
+    - r-lmtest
+    - r-mass
+    - r-matrix
+    - r-matrix.utils
+    - r-pbapply
+    - r-pbmcapply
+    - r-pheatmap
+    - r-plotly
+    - r-plyr
+    - r-proxy
+    - r-pryr
+    - r-pscl
+    - r-purrr
+    - r-rann
+    - r-rcpp
+    - r-rcpphnsw
+    - r-rcppparallel
+    - r-reshape2
+    - r-reticulate
+    - r-rhpcblasctl
+    - r-rmarkdown
+    - r-rsample
+    - r-rtsne
+    - r-shiny
+    - r-slam
+    - r-spdep
+    - r-speedglm
+    - r-spelling
+    - r-stringr
+    - r-terra
+    - r-testthat
+    - r-tibble
+    - r-tidyr
+    - r-uwot
+    - r-viridis
+    - tbb-devel
+test:
+  commands:
+    - $R -e "library('monocle3')"
+about:
+  home: https://cole-trapnell-lab.github.io/monocle3
+  dev_url: https://github.com/cole-trapnell-lab/monocle3
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: An analysis toolkit for single-cell RNA-seq.
+  doc_url: https://cole-trapnell-lab.github.io/monocle3/docs/introduction
