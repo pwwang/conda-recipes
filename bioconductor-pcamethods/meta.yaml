@@ -1,0 +1,57 @@
+package:
+  name: bioconductor-pcamethods
+  version: 2.2.0
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/pcaMethods_2.2.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/pcaMethods/pcaMethods_2.2.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/pcaMethods_2.2.0.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-pcamethods/bioconductor-pcamethods_2.2.0_src_all.tar.gz
+  md5: 498ad5899a75225d16867c7806d2a123
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - bioconductor-biobase
+    - bioconductor-biocgenerics
+    - libblas
+    - libgcc
+    - liblapack
+    - liblzma
+    - libstdcxx
+    - libzlib
+    - r-base
+    - r-base
+    - r-mass
+    - r-rcpp
+  run:
+    - bioconductor-biobase
+    - bioconductor-biocgenerics
+    - libblas
+    - libgcc
+    - liblapack
+    - liblzma
+    - libstdcxx
+    - libzlib
+    - r-base
+    - r-base
+    - r-mass
+    - r-rcpp
+test:
+  commands:
+    - $R -e "library('pcaMethods')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/pcaMethods.html
+  license: GPL (>= 3)
+  summary: A collection of PCA methods
+  description: Provides Bayesian PCA, Probabilistic PCA, Nipals PCA, Inverse Non-Linear
+    PCA and the conventional SVD PCA. A cluster based method for missing value estimation
+    is included for comparison. BPCA, PPCA and NipalsPCA may be used to perform PCA
+    on incomplete data as well as for accurate missing value estimation. A set of
+    methods for printing and plotting the results is also provided. All PCA methods
+    make use of the same data structure (pcaRes) to provide a common interface to
+    the PCA results. Initiated at the Max-Planck Institute for Molecular Plant Physiology,
+    Golm, Germany.
