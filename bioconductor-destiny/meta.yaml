@@ -16,7 +16,7 @@ build:
     - lib/R/lib/
 requirements:
   build:
-    - bioconductor-biobase
+    - bioconductor-biobase>=2.72
     - bioconductor-biocgenerics
     - bioconductor-pcamethods
     - bioconductor-singlecellexperiment
@@ -44,7 +44,7 @@ requirements:
     - r-tidyselect
     - r-vim
   run:
-    - bioconductor-biobase
+    - bioconductor-biobase>=2.72
     - bioconductor-biocgenerics
     - bioconductor-pcamethods
     - bioconductor-singlecellexperiment
