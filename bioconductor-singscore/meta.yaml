@@ -1,0 +1,63 @@
+package:
+  name: bioconductor-singscore
+  version: 1.30.0
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/singscore_1.30.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/singscore/singscore_1.30.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/singscore_1.30.0.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-singscore/bioconductor-singscore_1.30.0_src_all.tar.gz
+  md5: 99908987c09e9c88712de251f1ad536d
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+  noarch: generic
+requirements:
+  host:
+    - bioconductor-biobase
+    - bioconductor-biocparallel
+    - bioconductor-edger
+    - bioconductor-gseabase>=1.72
+    - bioconductor-s4vectors
+    - bioconductor-summarizedexperiment
+    - r-base
+    - r-ggplot2
+    - r-ggrepel
+    - r-magrittr
+    - r-matrixstats
+    - r-plotly
+    - r-plyr
+    - r-rcolorbrewer
+    - r-reshape
+    - r-reshape2
+    - r-tidyr
+  run:
+    - bioconductor-biobase
+    - bioconductor-biocparallel
+    - bioconductor-edger
+    - bioconductor-gseabase>=1.72
+    - bioconductor-s4vectors
+    - bioconductor-summarizedexperiment
+    - r-base
+    - r-ggplot2
+    - r-ggrepel
+    - r-magrittr
+    - r-matrixstats
+    - r-plotly
+    - r-plyr
+    - r-rcolorbrewer
+    - r-reshape
+    - r-reshape2
+    - r-tidyr
+test:
+  commands:
+    - $R -e "library('singscore')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/singscore.html
+  license: GPL-3
+  summary: Rank-based single-sample gene set scoring method
+  description: A simple single-sample gene signature scoring method that uses rank-based
+    statistics to analyze the sample's gene expression profile. It scores the expression
+    activities of gene sets at a single-sample level.
