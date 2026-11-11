@@ -1,13 +1,13 @@
 {% set name = "bioconductor-seqarray" %}
-{% set version = "1.42.4" %}
+{% set version = "1.52.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  git_url: https://git.bioconductor.org/packages/SeqArray
-  git_rev: ae2387745ec0a9af6bde8c331e86587cd7fbe4a5  # 4/3/2024
+  url:
+    - https://bioconductor.org/packages/3.23/bioc/src/contrib/SeqArray_1.52.1.tar.gz
 
 build:
   number: 0
@@ -17,7 +17,8 @@ build:
 
 requirements:
     host:
-      - r-base=4.2
+      - r-base
+      - r-digest
       - bioconductor-iranges
       - bioconductor-genomicranges
       - bioconductor-genomeinfodb
@@ -25,7 +26,8 @@ requirements:
       - bioconductor-s4vectors
       - bioconductor-gdsfmt
     run:
-      - r-base=4.2
+      - r-base
+      - r-digest
       - bioconductor-iranges
       - bioconductor-genomicranges
       - bioconductor-genomeinfodb
