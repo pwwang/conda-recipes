@@ -1,16 +1,37 @@
 {% set name = "bioconductor-screpertoire" %}
+{% set rb = r_base|default("4.4") %}
+
+{# R 4.4 stays on scRepertoire 2.7.3 + immApex 1.4.x (immReferent, needed by
+   newer immApex, declares R >= 4.5.0).  R 4.5+ gets the current line. #}
+{% if rb == "4.5" %}
+{% set version = "2.9.4" %}
+{% set sha256 = "252b15ccbf52c20b514cd39bacc3f97932888dbd36828c3c9ff265844f917e3c" %}
+{% set immapex_spec = ">=1.7.1,<1.8" %}
+{% set build_number = 3 %}
+{% else %}
 {% set version = "2.7.3" %}
+{% set sha256 = "11c4f2442a9fc7dd8a8dda999b5608aff138b27569c7f456ff25fa2cf70b3402" %}
+{% set immapex_spec = ">=1.4.3,<1.5" %}
+{% set build_number = 1 %}
+{% endif %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
+{% if rb == "4.5" %}
+  url:
+    - https://bioconductor.org/packages/3.24/bioc/src/contrib/scRepertoire_{{ version }}.tar.gz
+    - https://bioconductor.org/packages/3.24/bioc/src/contrib/Archive/scRepertoire/scRepertoire_{{ version }}.tar.gz
+{% else %}
   url: https://github.com/BorchLab/scRepertoire/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 11c4f2442a9fc7dd8a8dda999b5608aff138b27569c7f456ff25fa2cf70b3402
+{% endif %}
+  sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: {{ build_number }}
+  skip: {{ rb not in ["4.4", "4.5"] }}
   rpaths:
     - lib/R/lib/
     - lib/
@@ -19,9 +40,12 @@ requirements:
   host:
     - r-base
     - bioconductor-s4vectors
-    - bioconductor-singlecellexperiment
+    - bioconductor-singlecellexperiment=1.32
     - bioconductor-summarizedexperiment
-    - bioconductor-immapex >=1.4.0,<1.5
+    - bioconductor-immapex {{ immapex_spec }}
+{% if rb == "4.5" %}
+    - bioconductor-biocparallel=1.44
+{% endif %}
     - r-dplyr
     - r-evmix
     - r-ggalluvial
@@ -43,9 +67,12 @@ requirements:
   run:
     - r-base
     - bioconductor-s4vectors
-    - bioconductor-singlecellexperiment
+    - bioconductor-singlecellexperiment=1.32
     - bioconductor-summarizedexperiment
-    - bioconductor-immapex >=1.4.0,<1.5
+    - bioconductor-immapex {{ immapex_spec }}
+{% if rb == "4.5" %}
+    - bioconductor-biocparallel=1.44
+{% endif %}
     - r-dplyr
     - r-evmix
     - r-ggalluvial
@@ -67,7 +94,7 @@ requirements:
 test:
   commands:
     - $R -e "library('scRepertoire')"
-    - $R -e "library('scRepertoire'); stopifnot(packageVersion('immApex') >= '1.4.0', packageVersion('scRepertoire') == '2.7.3')"
+    - $R -e "library('scRepertoire'); stopifnot(packageVersion('scRepertoire') == '{{ version }}')"
 
 about:
   home: https://github.com/BorchLab/scRepertoire
