@@ -1,0 +1,47 @@
+package:
+  name: bioconductor-delayedmatrixstats
+  version: 1.32.0
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/DelayedMatrixStats_1.32.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/DelayedMatrixStats/DelayedMatrixStats_1.32.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/DelayedMatrixStats_1.32.0.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-delayedmatrixstats/bioconductor-delayedmatrixstats_1.32.0_src_all.tar.gz
+  md5: b8e1a8f2eb6a62c6f61d7f5ae42a296a
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+  noarch: generic
+requirements:
+  host:
+    - bioconductor-delayedarray
+    - bioconductor-iranges
+    - bioconductor-matrixgenerics
+    - bioconductor-s4vectors
+    - bioconductor-sparsearray
+    - bioconductor-sparsematrixstats
+    - r-base
+    - r-matrix
+  run:
+    - bioconductor-delayedarray
+    - bioconductor-iranges
+    - bioconductor-matrixgenerics
+    - bioconductor-s4vectors
+    - bioconductor-sparsearray
+    - bioconductor-sparsematrixstats
+    - r-base
+    - r-matrix
+test:
+  commands:
+    - $R -e "library('DelayedMatrixStats')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/DelayedMatrixStats.html
+  license: MIT + file LICENSE
+  summary: Functions that Apply to Rows and Columns of 'DelayedMatrix' Objects
+  description: A port of the 'matrixStats' API for use with DelayedMatrix objects
+    from the 'DelayedArray' package. High-performing functions operating on rows and
+    columns of DelayedMatrix objects, e.g. col / rowMedians(), col / rowRanks(), and
+    col / rowSds(). Functions optimized per data type and for subsetted calculations
+    such that both memory usage and processing time is minimized.
