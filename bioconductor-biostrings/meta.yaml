@@ -1,0 +1,52 @@
+package:
+  name: bioconductor-biostrings
+  version: 2.80.2
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/Biostrings_2.80.2.tar.gz
+    - https://bioconductor.org/packages/3.23/bioc/src/contrib/Archive/Biostrings/Biostrings_2.80.2.tar.gz
+    - https://bioconductor.org/packages/3.23/bioc/src/contrib/Biostrings_2.80.2.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-biostrings/bioconductor-biostrings_2.80.2_src_all.tar.gz
+  md5: 1ca4c420eb164cef95edad78b9a8baea
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - bioconductor-biocgenerics
+    - bioconductor-iranges
+    - bioconductor-s4vectors =0.48
+    - bioconductor-seqinfo
+    - bioconductor-xvector
+    - libblas
+    - libgcc
+    - liblapack
+    - liblzma
+    - libzlib
+    - r-base
+    - r-crayon
+  run:
+    - bioconductor-biocgenerics
+    - bioconductor-iranges
+    - bioconductor-s4vectors =0.48
+    - bioconductor-seqinfo
+    - bioconductor-xvector
+    - libblas
+    - libgcc
+    - liblapack
+    - liblzma
+    - libzlib
+    - r-base
+    - r-crayon
+test:
+  commands:
+    - $R -e "library('Biostrings')"
+about:
+  home: https://bioconductor.org/packages/3.23/bioc/html/Biostrings.html
+  license: Artistic-2.0
+  summary: Efficient manipulation of biological strings
+  description: Memory efficient string containers, string matching algorithms, and
+    other utilities, for fast manipulation of large biological sequences or sets of
+    sequences.
