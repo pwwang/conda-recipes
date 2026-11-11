@@ -1,0 +1,64 @@
+
+package:
+  name: bioconductor-fgsea
+  version: 1.36.2
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/fgsea_1.36.2.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/fgsea/fgsea_1.36.2.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/fgsea_1.36.2.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-fgsea/bioconductor-fgsea_1.36.2_src_all.tar.gz
+  md5: 4748cea86a4568cc4ad3e0752689a494
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - bioconductor-biocparallel
+    - libblas
+    - libgcc
+    - liblapack
+    - liblzma
+    - libstdcxx
+    - libzlib
+    - r-base
+    - r-bh
+    - r-cowplot
+    - r-data.table
+    - r-fastmatch
+    - r-ggplot2
+    - r-matrix
+    - r-rcpp
+    - r-scales
+  run:
+    - bioconductor-biocparallel
+    - libblas
+    - libgcc
+    - liblapack
+    - liblzma
+    - libstdcxx
+    - libzlib
+    - r-base
+    - r-bh
+    - r-cowplot
+    - r-data.table
+    - r-fastmatch
+    - r-ggplot2
+    - r-matrix
+    - r-rcpp
+    - r-scales
+test:
+  commands:
+    - $R -e "library('fgsea')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/fgsea.html
+  license: MIT + file LICENCE
+  summary: Fast Gene Set Enrichment Analysis
+  description: The package implements an algorithm for fast gene set enrichment analysis.
+    Using the fast algorithm allows to make more permutations and get more fine grained
+    p-values, which allows to use accurate stantard approaches to multiple hypothesis
+    correction.
+s
+    correction.
