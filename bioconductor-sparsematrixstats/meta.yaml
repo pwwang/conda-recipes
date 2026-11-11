@@ -1,0 +1,51 @@
+package:
+  name: bioconductor-sparsematrixstats
+  version: 1.22.0
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/sparseMatrixStats_1.22.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/sparseMatrixStats/sparseMatrixStats_1.22.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/sparseMatrixStats_1.22.0.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-sparsematrixstats/bioconductor-sparsematrixstats_1.22.0_src_all.tar.gz
+  md5: 0911afd4b58595f5b43aa39120a702e0
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - bioconductor-matrixgenerics
+    - libblas
+    - libgcc
+    - liblapack
+    - liblzma
+    - libstdcxx
+    - libzlib
+    - r-base
+    - r-matrix
+    - r-matrixstats
+    - r-rcpp
+  run:
+    - bioconductor-matrixgenerics
+    - libblas
+    - libgcc
+    - liblapack
+    - liblzma
+    - libstdcxx
+    - libzlib
+    - r-base
+    - r-matrix
+    - r-matrixstats
+    - r-rcpp
+test:
+  commands:
+    - $R -e "library('sparseMatrixStats')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/sparseMatrixStats.html
+  license: MIT + file LICENSE
+  summary: Summary Statistics for Rows and Columns of Sparse Matrices
+  description: 'High performance functions for row and column operations on sparse
+    matrices. For example: col / rowMeans2, col / rowMedians, col / rowVars etc. Currently,
+    the optimizations are limited to data in the column sparse format. This package
+    is inspired by the matrixStats package by Henrik Bengtsson.'
