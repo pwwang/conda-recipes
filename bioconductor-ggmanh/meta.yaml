@@ -23,6 +23,7 @@ requirements:
         - r-rcolorbrewer
         - r-scales
         - r-tidyr
+        - r-base
     run:
         - bioconductor-gdsfmt
         - bioconductor-seqarray
@@ -30,6 +31,7 @@ requirements:
         - r-rcolorbrewer
         - r-scales
         - r-tidyr
+        - r-base
 
 test:
     commands:
