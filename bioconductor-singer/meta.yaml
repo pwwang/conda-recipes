@@ -1,0 +1,62 @@
+package:
+  name: bioconductor-singler
+  version: 2.12.0
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/SingleR_2.12.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/SingleR/SingleR_2.12.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/SingleR_2.12.0.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-singler/bioconductor-singler_2.12.0_src_all.tar.gz
+  md5: 12622389366f03fd039efce486105774
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - bioconductor-assorthead
+    - bioconductor-beachmat
+    - bioconductor-biocneighbors
+    - bioconductor-biocparallel
+    - bioconductor-delayedarray
+    - bioconductor-delayedmatrixstats
+    - bioconductor-s4vectors
+    - bioconductor-summarizedexperiment>=1.42
+    - libblas
+    - libgcc
+    - liblapack
+    - liblzma
+    - libstdcxx
+    - libzlib
+    - r-base
+    - r-matrix
+    - r-rcpp
+  run:
+    - bioconductor-assorthead
+    - bioconductor-beachmat
+    - bioconductor-biocneighbors
+    - bioconductor-biocparallel
+    - bioconductor-delayedarray
+    - bioconductor-delayedmatrixstats
+    - bioconductor-s4vectors
+    - bioconductor-summarizedexperiment>=1.42
+    - libblas
+    - libgcc
+    - liblapack
+    - liblzma
+    - libstdcxx
+    - libzlib
+    - r-base
+    - r-matrix
+    - r-rcpp
+test:
+  commands:
+    - $R -e "library('SingleR')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/SingleR.html
+  license: GPL-3
+  summary: Reference-Based Single-Cell RNA-Seq Annotation
+  description: Performs unbiased cell type recognition from single-cell RNA sequencing
+    data, by leveraging reference transcriptomic datasets of pure cell types to infer
+    the cell of origin of each single cell independently.
