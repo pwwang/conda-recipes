@@ -1,16 +1,37 @@
 {% set name = "bioconductor-immapex" %}
-{% set version = "1.4.0" %}
+{% set rb = r_base|default("4.4") %}
+
+{# R 4.4 keeps immApex 1.4.3 -- last line without immReferent (so it still
+   builds on R 4.4) and the last one whose buildNetwork() takes the
+   dist_type/dist_mat/normalize/gap_open/gap_extend args scRepertoire 2.7.x passes;
+   R 4.5+ uses the current devel line, which imports immReferent. #}
+{% if rb == "4.5" %}
+{% set version = "1.7.2" %}
+{% set sha256 = "0c12d920b957c195536ea3064eca18c777ab3248a1e96ba659d1b388848c9197" %}
+{% else %}
+{% set version = "1.4.3" %}
+{% set sha256 = "72d74a529fa7f4647e44907fcb16fe6a3d74f90cdbff2adbcfc68f639f206343" %}
+{% endif %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/immApex/immApex_1.4.0.tar.gz
-  sha256: 0ea1d1130150ea4017b784fc34862027e0008fa4a454ca08a31143f71c389277
+{% if rb == "4.5" %}
+  url:
+    - https://bioconductor.org/packages/3.24/bioc/src/contrib/immApex_{{ version }}.tar.gz
+    - https://bioconductor.org/packages/3.24/bioc/src/contrib/Archive/immApex/immApex_{{ version }}.tar.gz
+{% else %}
+  url:
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/immApex_{{ version }}.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/immApex/immApex_{{ version }}.tar.gz
+{% endif %}
+  sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
+  skip: {{ rb not in ["4.4", "4.5"] }}
   rpaths:
     - lib/R/lib/
     - lib/
@@ -18,25 +39,33 @@ build:
 requirements:
   host:
     - r-base
-    - bioconductor-singlecellexperiment
-    - r-hash
-    - r-httr
+    - bioconductor-singlecellexperiment=1.32
     - r-matrix
     - r-matrixstats
     - r-rcpp
-    - r-rvest
     - r-stringr
+{% if rb == "4.5" %}
+    - bioconductor-immreferent
+{% else %}
+    - r-hash
+    - r-httr
+    - r-rvest
+{% endif %}
 
   run:
     - r-base
-    - bioconductor-singlecellexperiment
-    - r-hash
-    - r-httr
+    - bioconductor-singlecellexperiment=1.32
     - r-matrix
     - r-matrixstats
     - r-rcpp
-    - r-rvest
     - r-stringr
+{% if rb == "4.5" %}
+    - bioconductor-immreferent
+{% else %}
+    - r-hash
+    - r-httr
+    - r-rvest
+{% endif %}
 
 test:
   commands:
