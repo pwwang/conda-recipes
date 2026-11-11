@@ -1,0 +1,76 @@
+package:
+  name: bioconductor-scmap
+  version: 1.32.0
+source:
+  url:
+    - https://bioarchive.galaxyproject.org/scmap_1.32.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/Archive/scmap/scmap_1.32.0.tar.gz
+    - https://bioconductor.org/packages/3.22/bioc/src/contrib/scmap_1.32.0.tar.gz
+    - https://depot.galaxyproject.org/software/bioconductor-scmap/bioconductor-scmap_1.32.0_src_all.tar.gz
+  md5: 969bdeb217f427663dfe0a40addb5d73
+build:
+  number: '0'
+  rpaths:
+    - lib/
+    - lib/R/lib/
+requirements:
+  host:
+    - bioconductor-biobase
+    - bioconductor-biocgenerics
+    - bioconductor-s4vectors
+    - bioconductor-singlecellexperiment
+    - bioconductor-summarizedexperiment
+    - libblas
+    - libgcc
+    - liblapack
+    - liblzma
+    - libstdcxx
+    - libzlib
+    - r-base
+    - r-dplyr
+    - r-e1071
+    - r-ggplot2
+    - r-googlevis
+    - r-matrixstats
+    - r-proxy
+    - r-randomforest
+    - r-rcpp
+    - r-rcpparmadillo
+    - r-reshape2
+  run:
+    - bioconductor-biobase
+    - bioconductor-biocgenerics
+    - bioconductor-s4vectors
+    - bioconductor-singlecellexperiment
+    - bioconductor-summarizedexperiment
+    - libblas
+    - libgcc
+    - liblapack
+    - liblzma
+    - libstdcxx
+    - libzlib
+    - r-base
+    - r-dplyr
+    - r-e1071
+    - r-ggplot2
+    - r-googlevis
+    - r-matrixstats
+    - r-proxy
+    - r-randomforest
+    - r-rcpp
+    - r-rcpparmadillo
+    - r-reshape2
+test:
+  commands:
+    - $R -e "library('scmap')"
+about:
+  home: https://bioconductor.org/packages/3.22/bioc/html/scmap.html
+  license: GPL-3
+  summary: A tool for unsupervised projection of single cell RNA-seq data
+  description: Single-cell RNA-seq (scRNA-seq) is widely used to investigate the composition
+    of complex tissues since the technology allows researchers to define cell-types
+    using unsupervised clustering of the transcriptome. However, due to differences
+    in experimental methods and computational analyses, it is often challenging to
+    directly compare the cells identified in two different experiments. scmap is a
+    method for projecting cells from a scRNA-seq experiment on to the cell-types or
+    individual cells identified in a different experiment.
