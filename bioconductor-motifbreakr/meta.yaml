@@ -10,7 +10,7 @@ source:
   git_url: https://github.com/Simon-Coetzee/motifBreakR
   git_rev: 21d39f8cc6ed7f8ef8aebedd792ffb2ebf101a6b
 build:
-  number: '2'
+  number: '1'
   rpaths:
     - lib/
     - lib/R/lib/
