@@ -9,7 +9,7 @@ source:
     - https://depot.galaxyproject.org/software/bioconductor-aucell/bioconductor-aucell_1.32.0_src_all.tar.gz
   md5: f65aac910be023f1ae26ba53a1ed3f8c
 build:
-  number: '0'
+  number: '1'
   rpaths:
     - lib/
     - lib/R/lib/
@@ -20,7 +20,7 @@ requirements:
     - bioconductor-delayedarray
     - bioconductor-delayedmatrixstats
     - bioconductor-gseabase
-    - bioconductor-summarizedexperiment
+    - bioconductor-summarizedexperiment=1.36
     - r-base
     - r-data.table
     - r-matrix
@@ -31,7 +31,7 @@ requirements:
     - bioconductor-delayedarray
     - bioconductor-delayedmatrixstats
     - bioconductor-gseabase
-    - bioconductor-summarizedexperiment
+    - bioconductor-summarizedexperiment=1.36
     - r-base
     - r-data.table
     - r-matrix
