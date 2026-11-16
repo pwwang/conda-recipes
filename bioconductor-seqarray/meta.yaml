@@ -10,7 +10,7 @@ source:
     - https://bioconductor.org/packages/3.23/bioc/src/contrib/SeqArray_1.52.1.tar.gz
 
 build:
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -22,7 +22,7 @@ requirements:
       - bioconductor-iranges
       - bioconductor-genomicranges
       - bioconductor-genomeinfodb
-      - bioconductor-biostrings
+      - bioconductor-biostrings =2.78
       - bioconductor-s4vectors
       - bioconductor-gdsfmt
     run:
@@ -31,7 +31,7 @@ requirements:
       - bioconductor-iranges
       - bioconductor-genomicranges
       - bioconductor-genomeinfodb
-      - bioconductor-biostrings
+      - bioconductor-biostrings =2.78
       - bioconductor-s4vectors
       - bioconductor-gdsfmt
 
