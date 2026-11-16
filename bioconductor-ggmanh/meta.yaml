@@ -7,7 +7,7 @@ package:
 
 source:
   git_url: https://github.com/swannyy14/ggmanh
-  git_rev: f27c0fc76579fa17ccc158ffd7c30220bebfc106  # 6/15/2024
+  git_rev: 33766988c092b356188bd01e775282344f7d8637  # 6/15/2024
 
 build:
   number: 0
