@@ -10,7 +10,7 @@ source:
   git_url: https://github.com/Simon-Coetzee/motifBreakR
   git_rev: 21d39f8cc6ed7f8ef8aebedd792ffb2ebf101a6b
 build:
-  number: '1'
+  number: '2'
   rpaths:
     - lib/
     - lib/R/lib/
@@ -34,7 +34,7 @@ requirements:
     - bioconductor-motifstack >=1.50.0
     - bioconductor-rtracklayer
     - bioconductor-s4vectors
-    - bioconductor-summarizedexperiment
+    - bioconductor-summarizedexperiment =1.40
     - bioconductor-variantannotation
     - bioconductor-pwalign
     - bioconductor-biocfilecache
@@ -61,7 +61,7 @@ requirements:
     - bioconductor-motifstack >=1.50.0
     - bioconductor-rtracklayer
     - bioconductor-s4vectors
-    - bioconductor-summarizedexperiment
+    - bioconductor-summarizedexperiment =1.40
     - bioconductor-variantannotation
     - bioconductor-pwalign
     - bioconductor-biocfilecache
