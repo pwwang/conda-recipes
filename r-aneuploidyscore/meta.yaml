@@ -21,7 +21,7 @@ requirements:
     - bioconductor-genomicranges
     - bioconductor-iranges
     - bioconductor-s4vectors
-    - bioconductor-genomeinfodb
+    - bioconductor-genomeinfodb =1.46
     - r-matrixstats
 
   run:
@@ -29,7 +29,7 @@ requirements:
     - bioconductor-genomicranges
     - bioconductor-iranges
     - bioconductor-s4vectors
-    - bioconductor-genomeinfodb
+    - bioconductor-genomeinfodb =1.46
     - r-matrixstats
 
 test:
